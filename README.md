@@ -1,2 +1,2 @@
 # Team_Timeplan
-Hallaaaaaaa
+add, commit, push, repeat
