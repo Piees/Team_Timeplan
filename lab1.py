@@ -11,7 +11,7 @@ import sys
 
 # Skriv inn fullt navn på gruppemedlemene (erstatte '-' med navn slikt 'Kari Trå')
 gruppe = {  'student1': 'Yngve Olsen Ranestad', \
-			'student2': 'Arild aslmfslfkkkk', \
+			'student2': 'Arild Høyland', \
             'student3': 'Steffen Sande', \
             'student5': 'Even Adrian Nilsen', \
             'student6': 'Håkon Dale', \
@@ -104,9 +104,16 @@ print "bitorvariabel = %d" %bitorvariabel
 #	 Hvilke begrensninger vil en slik funksjon ha? (tips: prøv med bokstaven 'å', f.eks.)
 #	 Forklar resultatet ascii8Bin('å')
 #	 Hvilke faktorer påvirker resultatet? Forklar.
+#	 faktor som spiller inn er at å ikke er ascii så den
+#	 så den returnerer en string med størrelse 2
 #
 def ascii8Bin(letter):
-	pass
+	enBin = ord(letter)
+	tilBin = "{0:08b}".format(enBin)
+	print(tilBin)
+
+print "f i binær = "
+ascii8Bin("f")
 
 #
 #  Oppgave 6
