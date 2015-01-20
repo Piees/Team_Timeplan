@@ -33,12 +33,14 @@ print gruppe
 #    (./
 #     '`
 def ascii_bird():
-	print"      \\/_"
-	print"  \\,   /( ,/"
-	print"   \\\\\\' ///"
-	print"    \\_ /_/"
-	print"    (./"
-	print"     '`"
+    print """
+           \\/_
+      \\,   /( ,/
+       \\\\\\' ///
+        \\_ /_/
+        (./
+         '`
+     """
 
 ascii_bird()
 #
