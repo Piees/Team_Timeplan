@@ -17,7 +17,11 @@ gruppe = {  'student1': 'Yngve Olsen Ranestad', \
             'student6': 'Håkon Dale', \
             'student7': 'Øistein Syversen Fongaard', \
 }
-print gruppe
+
+print "Gruppemedlemmer:"
+# Print alle 'values' i dictionary gruppe
+for k, v in gruppe.items():
+    print "\t%s" % v
 
 #
 #  Oppgave 1
@@ -54,11 +58,11 @@ ascii_bird()
 #					den mest signifikante bit-en er lengst til venstre
 def bitAnd(x, y):
 	print "%d and %d" %(x, y)
-	return x&y
+	return x & y
 
 bitandvariabel = bitAnd(6, 5)
 
-print "bitandvariabel = %d" %bitandvariabel
+print "bitandvariabel = %d" % bitandvariabel
 
 #
 #  Oppgave 3
@@ -69,9 +73,9 @@ def bitXor(x, y):
 	print "%d xor %d" % (x, y)
 	return x ^ y
 
-bitxorvariabel = bitXor(4,5)
+bitxorvariabel = bitXor(4, 5)
 
-print "bitxorvariabel = %d" %bitxorvariabel
+print "bitxorvariabel = %d" % bitxorvariabel
 
 #
 #  Oppgave 4
@@ -84,7 +88,7 @@ def bitOr(x, y):
 
 bitorvariabel = bitOr(0, 1)
 
-print "bitorvariabel = %d" %bitorvariabel
+print "bitorvariabel = %d" % bitorvariabel
 
 #
 #  Oppgave 5
