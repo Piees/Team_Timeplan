@@ -2,7 +2,7 @@
 
 # gitklient.sh
 # Kommandolinje klient for git(hub) - Christer Jonassen
-# 
+#
 # Forutsetter at current directory er et repository og at det er riktig satt opp.
 
 APPVERSION="0.3"
@@ -101,14 +101,14 @@ synkronisermedgithub()
 
 meny()
 {
-header   
+header
 skrivut "  1. Commit alle endringer"
 skrivut "     (git add * --all)"
-skrivut    
+skrivut
 skrivut "  2. Synkroniser med github.com"
 skrivut "     (git pull origin master og"
 skrivut "      git push origin master)"
-skrivut   
+skrivut
 skrivut "  X. Avslutt"
 skrivut
 skrivut
@@ -117,7 +117,7 @@ skrivut "Velg en handling (1, 2 eller X):"
 read -s -n 1 SELECTION
 
 case "$SELECTION" in
- 	1)
+    1)
 		leggtilogcommit
 		;;
 
@@ -141,5 +141,5 @@ esac
 # selve runscriptet
 while true
         do
-        	meny
+            meny
         done
