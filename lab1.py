@@ -118,8 +118,8 @@ def ascii8Bin(letter):
 	tilBin = "{0:10b}".format(enBin)
 	print(tilBin)
 
-print "å i binær = "
-ascii8Bin("å")
+print "z i binær = "
+ascii8Bin("z")
 
 #
 #  Oppgave 6
