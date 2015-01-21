@@ -115,11 +115,11 @@ print "bitorvariabel = %d" % bitorvariabel
 #
 def ascii8Bin(letter):
 	enBin = ord(letter)
-	tilBin = "{0:10b}".format(enBin)
+	tilBin = "{0:8b}".format(enBin)
 	print(tilBin)
 
-print "z i binær = "
-ascii8Bin("z")
+print "g i binær = "
+ascii8Bin("g")
 
 #
 #  Oppgave 6
