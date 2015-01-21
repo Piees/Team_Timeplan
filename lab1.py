@@ -8,7 +8,9 @@
 #
 #
 import sys
-
+import psutil
+import platform
+import subprocess
 # Skriv inn fullt navn på gruppemedlemene (erstatte '-' med navn slikt 'Kari Trå')
 gruppe = {  'student1': 'Yngve Olsen Ranestad', \
 			'student2': 'Arild Høyland', \
@@ -172,8 +174,20 @@ transferHex("19al")
 # Oppgave 8
 # 		Implementer en funksjon unicodeBin, som kan behandle norske bokstaver
 # 		Kravspesifikasjon for denne funksjonen er den samme som for ascii8Bin funksjonen
+
+print "*****"
 def unicodeBin(character):
-	pass
+	enBin = ord(character)
+	tilBin = "{0:02x}".format(enBin)
+	print(tilBin)
+
+def transferBin(string):
+	l = list(string)
+	for c in l:
+		print "under sjekker vi om %s er %s i hex" % (c, c.encode("hex"))
+		unicodeBin(c)
+
+transferBin("paul")
 
 #
 # Oppgave 9
@@ -181,12 +195,12 @@ def unicodeBin(character):
 #   Prøv å finne ut hvordan du kan finne ut og skrive ut følgende informasjon om din
 #   datamaskin-node:
 #
-# 			Brand and model
-# 			Hard drive capacity
-# 			Amount of RAM
-# 			Model and speed of CPU
-# 			Display resolution and size
-# 			Operating system
+# 			xBrand and model
+# 			*Hard drive capacity
+# 			*Amount of RAM
+# 			xModel and speed of CPU
+# 			xDisplay resolution and size
+# 			xOperating system
 #
 #	Forklar hvorfor man kan / ikke kan finne denne informasjon vha. psutil modulen.
 #	Skriv en funksjon printSysInfo som skriver ut den informasjon som psutil kan finne.
@@ -194,7 +208,21 @@ def unicodeBin(character):
 #	Hvilke andre muligheter har man for å finne informasjon om maskinvare i GNU/Linux?
 #
 def printSysInfo():
-	pass
+	#Hard drive capacity
+	diskUsage = psutil.disk_usage('/')
+	print "disk capacity:", diskUsage.total/1000000000, "GB"
+	#Amount of RAM
+	mem = psutil.virtual_memory()
+	print "memory total:", mem.total/1000000, "mb"
+	#Model and speed of CPU
+	#Display resolution and size
+	scrnsize = subprocess.Popen('xrandr | grep "\*" | cut -d" " -f4',shell=True, stdout=subprocess.PIPE).communicate()[0]
+	print "your screen resolution:", scrnsize
+	#Operating system !using psutil
+	pf = platform.platform()
+	print "your platform:", pf
+
+printSysInfo()
 
 
 def test():
