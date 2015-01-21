@@ -131,11 +131,18 @@ ascii8Bin("f")
 #	 Forklart hver linje i denne funksjonen (hva er list, hva gjør in)
 #	 Skriv selv inn tester ved å bruke assert i funksjonen test()
 #
+
+print "*****"
+
 def transferBin(string):
 	l = list(string)
 	for c in l:
 		# skriv ut den binære representasjon av hvert tegn (bruk ascii8Bin funksjonen din)
 		print "Den binære representasjonen for %s" % c
+		ascii8Bin(c)
+
+transferBin("abc")
+
 
 #
 #  Oppgave 7
@@ -145,10 +152,21 @@ def transferBin(string):
 #					med 2 heksadesimale tegn
 #    Skriv selv inn tester ved å bruke assert i funksjonen test()
 #
+
+print "****"
+
+def ascii2Hex(letter):
+	enHex = ord(letter)
+	tilHex = "{0:02X}".format(enHex)
+	print(tilHex)
+
 def transferHex(string):
 	l = list(string)
 	for c in l:
 		print "Den heksadesimale representasjonen for %s" % c
+		ascii2Hex(c)
+
+transferHex("19al")
 
 #
 # Oppgave 8
