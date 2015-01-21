@@ -36,6 +36,7 @@ for k, v in gruppe.items():
 #    \_ /_/
 #    (./
 #     '`
+print "oppgave 1"
 def ascii_bird():
     print """
            \\/_
@@ -56,6 +57,7 @@ ascii_bird()
 #					1 AND 1 gir 1, 1 AND 0 gir 0 og 0 AND 1 gir 0 => 100 binært
 #					er 4 desimalt. Antagelse: posisjonsbasert tallsystem og
 #					den mest signifikante bit-en er lengst til venstre
+print "oppgave 2"
 def bitAnd(x, y):
 	print "%d and %d" %(x, y)
 	return x & y
@@ -69,6 +71,7 @@ print "bitandvariabel = %d" % bitandvariabel
 #    bitXor - x^y
 #    Eksempel: bitXor(4, 5) = 1
 #
+print "oppgave 3"
 def bitXor(x, y):
 	print "%d xor %d" % (x, y)
 	return x ^ y
@@ -82,6 +85,7 @@ print "bitxorvariabel = %d" % bitxorvariabel
 #    bitOr - x|y
 #    Eksempel: bitOr(0, 1) = 1
 #
+print "oppgave 4"
 def bitOr(x, y):
 	print "%d or %d" % (x,y)
 	return x | y
@@ -113,6 +117,7 @@ print "bitorvariabel = %d" % bitorvariabel
 #	 faktor som spiller inn er at å ikke er ascii så den
 #	 så den returnerer en string med størrelse 2
 #
+print "oppgave 5"
 def ascii8Bin(letter):
 	enBin = ord(letter)
 	tilBin = "{0:8b}".format(enBin)
@@ -131,11 +136,14 @@ ascii8Bin("g")
 #	 Forklart hver linje i denne funksjonen (hva er list, hva gjør in)
 #	 Skriv selv inn tester ved å bruke assert i funksjonen test()
 #
+print "oppgave 6"
 def transferBin(string):
 	l = list(string)
 	for c in l:
-		# skriv ut den binære representasjon av hvert tegn (bruk ascii8Bin funksjonen din)
-		print "Den binære representasjonen for %s" % c
+
+         ascii8Bin(c)
+
+print transferBin('python')
 
 #
 #  Oppgave 7
@@ -145,15 +153,30 @@ def transferBin(string):
 #					med 2 heksadesimale tegn
 #    Skriv selv inn tester ved å bruke assert i funksjonen test()
 #
+
+print "oppgave 7"
+def ascii8Bin1(A):
+    bokstav = ord(A)
+    bokstavvalg="{0:08x}".format(bokstav)
+    return bokstavvalg
+
+ascii8Bin1("A")
+
 def transferHex(string):
-	l = list(string)
-	for c in l:
-		print "Den heksadesimale representasjonen for %s" % c
+    l = list(string)
+    for c in l:
+
+        print ascii8Bin1(c)
+
+
+transferHex("python")
+
 
 #
 # Oppgave 8
 # 		Implementer en funksjon unicodeBin, som kan behandle norske bokstaver
 # 		Kravspesifikasjon for denne funksjonen er den samme som for ascii8Bin funksjonen
+print "oppgave 8"
 def unicodeBin(character):
 	pass
 
@@ -175,6 +198,7 @@ def unicodeBin(character):
 #	Kan dere skrive en test for denne funksjonen?
 #	Hvilke andre muligheter har man for å finne informasjon om maskinvare i GNU/Linux?
 #
+print "oppgave 9"
 def printSysInfo():
 	pass
 
