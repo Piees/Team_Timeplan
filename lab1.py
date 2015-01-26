@@ -20,8 +20,8 @@ gruppe = {  'student1': 'Yngve Olsen Ranestad', \
 
 print "Gruppemedlemmer:"
 # Print alle 'values' i dictionary gruppe
-for k, v in gruppe.items():
-    print "\t%s" % v
+for key, value in gruppe.items():
+    print "\t%s" % value
 
 #
 #  Oppgave 1
@@ -119,7 +119,7 @@ def ascii8Bin(letter):
 	print(tilBin)
 
 print "f i binær = "
-ascii8Bin("f")
+ascii8Bin("J")
 
 #
 #  Oppgave 6
@@ -135,7 +135,10 @@ def transferBin(string):
 	l = list(string)
 	for c in l:
 		# skriv ut den binære representasjon av hvert tegn (bruk ascii8Bin funksjonen din)
-		print "Den binære representasjonen for %s" % c
+            print "Den binære representasjonen for %s" % c
+            ascii8Bin(c)
+
+transferBin("Janis")
 
 #
 #  Oppgave 7
