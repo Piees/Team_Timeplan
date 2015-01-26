@@ -8,6 +8,7 @@
 #
 #
 import sys
+import platform
 
 # Skriv inn fullt navn på gruppemedlemene (erstatte '-' med navn slikt 'Kari Trå')
 gruppe = {  'student1': 'Yngve Olsen Ranestad', \
@@ -114,12 +115,11 @@ print "bitorvariabel = %d" % bitorvariabel
 #	 så den returnerer en string med størrelse 2
 #
 def ascii8Bin(letter):
-	enBin = ord(letter)
-	tilBin = "{0:08b}".format(enBin)
-	print(tilBin)
+    enBin = ord(letter)
+    return "{0:08b}".format(enBin)
 
-print "f i binær = "
-ascii8Bin("J")
+ascii_letter = ascii8Bin("J")
+print "J i binær = %s" % ascii_letter
 
 #
 #  Oppgave 6
@@ -132,11 +132,11 @@ ascii8Bin("J")
 #	 Skriv selv inn tester ved å bruke assert i funksjonen test()
 #
 def transferBin(string):
-	l = list(string)
-	for c in l:
-		# skriv ut den binære representasjon av hvert tegn (bruk ascii8Bin funksjonen din)
-            print "Den binære representasjonen for %s" % c
-            ascii8Bin(c)
+    l = list(string)
+    for c in l:
+            # skriv ut den binære representasjon av hvert tegn (bruk ascii8Bin funksjonen din)
+        print "Den binære representasjonen for %s" % c
+        print ascii8Bin(c)
 
 transferBin("Janis")
 
@@ -148,18 +148,31 @@ transferBin("Janis")
 #					med 2 heksadesimale tegn
 #    Skriv selv inn tester ved å bruke assert i funksjonen test()
 #
+def ascii2_hex(letter):
+    ascii_letter = ord(letter)
+    return "{0:2x}".format(ascii_letter)
+
 def transferHex(string):
-	l = list(string)
-	for c in l:
-		print "Den heksadesimale representasjonen for %s" % c
+    l = list(string)
+    for c in l:
+        print "Den heksadesimale representasjonen for %s" % c
+        print ascii2_hex(c)
+
+transferHex("Janis")
 
 #
 # Oppgave 8
 # 		Implementer en funksjon unicodeBin, som kan behandle norske bokstaver
 # 		Kravspesifikasjon for denne funksjonen er den samme som for ascii8Bin funksjonen
-def unicodeBin(character):
-	pass
+#def unicodeBin(character):
+    #print "test1"
+    #uni_character = unicode(character, "utf-8")
+    #print "test2"
+    #print uni_character
+    #return "{0:08b}".format(uni_character)
+    #print "test3"
 
+#print unicodeBin("å")
 #
 # Oppgave 9
 # 	Studer python module psutils (må være obs på versjon)
@@ -179,8 +192,9 @@ def unicodeBin(character):
 #	Hvilke andre muligheter har man for å finne informasjon om maskinvare i GNU/Linux?
 #
 def printSysInfo():
-	pass
+    print "Operating system: %s" % (platform.linux_distribution(), )
 
+printSysInfo()
 
 def test():
 	assert bitAnd(6, 5) == 4
