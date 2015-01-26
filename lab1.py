@@ -39,12 +39,12 @@ for k, v in gruppe.items():
 print "oppgave 1"
 def ascii_bird():
     print """
-           \\/_
-      \\,   /( ,/
-       \\\\\\' ///
-        \\_ /_/
-        (./
-         '`
+        \/_
+   \,   /( ,/
+    \\\' ///
+     \_ /_/
+     (./
+     '`
      """
 
 ascii_bird()
@@ -178,7 +178,12 @@ transferHex("python")
 # 		Kravspesifikasjon for denne funksjonen er den samme som for ascii8Bin funksjonen
 print "oppgave 8"
 def unicodeBin(character):
-	pass
+	content = u'\xe5\xb1\x82\xe5\x8f\xa0\xe6\xa0\xb7\xe5\xbc\x8f\xe8\xa1\xa8'
+	content.encode('latin1')
+'\xe5\xb1\x82\xe5\x8f\xa0\xe6\xa0\xb7\xe5\xbc\x8f\xe8\xa1\xa8'
+	content.encode('latin1').decode('utf8')
+u'\u5c42\u53e0\u6837\u5f0f\u8868'
+	print content.encode('latin1').decode('utf8')
 
 #
 # Oppgave 9
