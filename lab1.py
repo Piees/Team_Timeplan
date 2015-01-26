@@ -7,6 +7,31 @@
 #
 #
 #
+
+
+#
+#  Oppgave 5
+#
+#  Tips:
+#    For å finne desimalverdien til et tegn kan funksjonen ord brukes, for eksempel
+#      ord('A') , det vil gi et tall 65 i ti-tallssystemet
+#    For å formattere 6 i ti-tallssystemet til 00000110 i to-tallssystemet
+#      '{0:08b}'.format(6)
+#      00000110
+#
+#    Formatteringsstrengen forklart:
+#      {} setter en variabel inn i strengen
+#      0 tar variabelen i argument posisjon 0
+#      : legger til formatteringsmuligheter for denne variabelen (ellers hadde den 6 desimalt)
+#      08 formatterer tall til 8 tegn og fuller med nuller til venstre hvis nødvendig
+#      b konverterer tallet til dets binære representasjon
+#
+#	 Hvilke begrensninger vil en slik funksjon ha? (tips: prøv med bokstaven 'å', f.eks.)
+#	 Forklar resultatet ascii8Bin('å')
+#	 Hvilke faktorer påvirker resultatet? Forklar.
+#	 faktor som spiller inn er at å ikke er ascii så den
+#	 så den returnerer en string med størrelse 2
+#
 import sys
 import psutil
 import platform
@@ -38,6 +63,9 @@ for k, v in gruppe.items():
 #    \_ /_/
 #    (./
 #     '`
+
+print "oppgave 1"
+
 def ascii_bird():
     print """
            \\/_
@@ -58,6 +86,9 @@ ascii_bird()
 #					1 AND 1 gir 1, 1 AND 0 gir 0 og 0 AND 1 gir 0 => 100 binært
 #					er 4 desimalt. Antagelse: posisjonsbasert tallsystem og
 #					den mest signifikante bit-en er lengst til venstre
+
+print "oppgave 2"
+
 def bitAnd(x, y):
 	print "%d and %d" %(x, y)
 	return x & y
@@ -71,6 +102,7 @@ print "bitandvariabel = %d" % bitandvariabel
 #    bitXor - x^y
 #    Eksempel: bitXor(4, 5) = 1
 #
+print "oppgave 3"
 def bitXor(x, y):
 	print "%d xor %d" % (x, y)
 	return x ^ y
@@ -84,6 +116,7 @@ print "bitxorvariabel = %d" % bitxorvariabel
 #    bitOr - x|y
 #    Eksempel: bitOr(0, 1) = 1
 #
+print "oppgave 4"
 def bitOr(x, y):
 	print "%d or %d" % (x,y)
 	return x | y
@@ -94,34 +127,26 @@ print "bitorvariabel = %d" % bitorvariabel
 
 #
 #  Oppgave 5
-#
-#  Tips:
-#    For å finne desimalverdien til et tegn kan funksjonen ord brukes, for eksempel
-#      ord('A') , det vil gi et tall 65 i ti-tallssystemet
-#    For å formattere 6 i ti-tallssystemet til 00000110 i to-tallssystemet
-#      '{0:08b}'.format(6)
-#      00000110
-#
-#    Formatteringsstrengen forklart:
-#      {} setter en variabel inn i strengen
-#      0 tar variabelen i argument posisjon 0
-#      : legger til formatteringsmuligheter for denne variabelen (ellers hadde den 6 desimalt)
-#      08 formatterer tall til 8 tegn og fuller med nuller til venstre hvis nødvendig
-#      b konverterer tallet til dets binære representasjon
-#
-#	 Hvilke begrensninger vil en slik funksjon ha? (tips: prøv med bokstaven 'å', f.eks.)
-#	 Forklar resultatet ascii8Bin('å')
-#	 Hvilke faktorer påvirker resultatet? Forklar.
-#	 faktor som spiller inn er at å ikke er ascii så den
-#	 så den returnerer en string med størrelse 2
-#
+print "oppgave 5"
+
+#def ascii8Bin(letter):
+	#enBin = ord(letter)
+	#tilBin = "{0:08b}".format(enBin)
+	#print(tilBin)
+	#return tilBin
+
+#ascii8Bin('f')
+
 def ascii8Bin(letter):
 	enBin = ord(letter)
 	tilBin = "{0:08b}".format(enBin)
-	print(tilBin)
+	#print "%s er %s" % (letter, tilBin)
+	return tilBin
 
-print "f i binær = "
-ascii8Bin("f")
+shitson = ascii8Bin('a')
+
+print "shitson = %s" % shitson
+
 
 #
 #  Oppgave 6
@@ -134,14 +159,15 @@ ascii8Bin("f")
 #	 Skriv selv inn tester ved å bruke assert i funksjonen test()
 #
 
-print "*****"
+print "oppgave 6"
 
 def transferBin(string):
 	l = list(string)
 	for c in l:
 		# skriv ut den binære representasjon av hvert tegn (bruk ascii8Bin funksjonen din)
-		print "Den binære representasjonen for %s" % c
+		print "Den binære representasjonen for"
 		ascii8Bin(c)
+		return ascii8Bin(c)
 
 transferBin("abc")
 
@@ -155,18 +181,19 @@ transferBin("abc")
 #    Skriv selv inn tester ved å bruke assert i funksjonen test()
 #
 
-print "****"
+print "oppgave 7"
 
 def ascii2Hex(letter):
 	enHex = ord(letter)
 	tilHex = "{0:02X}".format(enHex)
-	print(tilHex)
+	return tilHex
 
 def transferHex(string):
 	l = list(string)
 	for c in l:
 		print "Den heksadesimale representasjonen for %s" % c
 		ascii2Hex(c)
+		return ascii2Hex(c)
 
 transferHex("19al")
 
@@ -175,19 +202,14 @@ transferHex("19al")
 # 		Implementer en funksjon unicodeBin, som kan behandle norske bokstaver
 # 		Kravspesifikasjon for denne funksjonen er den samme som for ascii8Bin funksjonen
 
-print "*****"
+print "oppgave 8"
+
 def unicodeBin(character):
-	enBin = ord(character)
-	tilBin = "{0:02x}".format(enBin)
+	l = ord(character)
+	tilBin = "{0:08b}".format(l)
 	print(tilBin)
 
-def transferBin(string):
-	l = list(string)
-	for c in l:
-		print "under sjekker vi om %s er %s i hex" % (c, c.encode("hex"))
-		unicodeBin(c)
-
-transferBin("paul")
+unicodeBin("å")
 
 #
 # Oppgave 9
@@ -207,6 +229,9 @@ transferBin("paul")
 #	Kan dere skrive en test for denne funksjonen?
 #	Hvilke andre muligheter har man for å finne informasjon om maskinvare i GNU/Linux?
 #
+
+print "oppgave 9"
+
 def printSysInfo():
 	#Hard drive capacity
 	diskUsage = psutil.disk_usage('/')
@@ -223,16 +248,17 @@ def printSysInfo():
 	print "your platform:", pf
 
 printSysInfo()
-
+print "test"
+unicodeBin('å')
 
 def test():
-	assert bitAnd(6, 5) == 4
-	assert bitXor(4, 5) == 1
-	assert bitOr(0, 1) == 1
-	assert ascii8Bin('a') == '01100001'
-	assert ascii8Bin('A') == '01000001'
-	# Skriv her inn passende tester for tarnsferBin og transferHex funksjoner
-	# fra oppgavene 6 og 7
+	#assert bitAnd(6, 5) == 4
+	#assert bitXor(4, 5) == 1
+	#assert bitOr(0, 1) == 1
+	#assert ascii8Bin('a') == '01100001'
+	#assert ascii8Bin('A') == '01000001'
+	#assert transferBin('a') == '01100001'
+	#assert transferHex("1") == '31'
 	assert unicodeBin('å') == '11100101'
 	# Dine egne tester
 	return "Testene er fullført uten feil."
