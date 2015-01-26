@@ -41,7 +41,7 @@ def ascii_bird():
     print """
         \/_
    \,   /( ,/
-    \\\' ///
+    \\\\\\' ///
      \_ /_/
      (./
       '`
@@ -177,7 +177,8 @@ transferHex("python")
 # 		Implementer en funksjon unicodeBin, som kan behandle norske bokstaver
 # 		Kravspesifikasjon for denne funksjonen er den samme som for ascii8Bin funksjonen
 print "oppgave 8"
-	pass
+
+
 
 #
 # Oppgave 9
