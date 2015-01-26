@@ -20,8 +20,8 @@ gruppe = {  'student1': 'Yngve Olsen Ranestad', \
 
 print "Gruppemedlemmer:"
 # Print alle 'values' i dictionary gruppe
-for k, v in gruppe.items():
-    print "\t%s" % v
+for key, value in gruppe.items():
+    print "\t%s" % value
 
 #
 #  Oppgave 1
