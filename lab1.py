@@ -8,6 +8,8 @@
 #
 #
 import sys
+import psutil
+import subprocess
 import platform
 
 # Skriv inn fullt navn på gruppemedlemene (erstatte '-' med navn slikt 'Kari Trå')
@@ -46,6 +48,7 @@ def ascii_bird():
         (./
          '`
      """
+print "\nOppgave 1\n"
 
 ascii_bird()
 #
@@ -63,6 +66,8 @@ def bitAnd(x, y):
 
 bitandvariabel = bitAnd(6, 5)
 
+print "\nOppgave 2\n"
+
 print "bitandvariabel = %d" % bitandvariabel
 
 #
@@ -76,6 +81,8 @@ def bitXor(x, y):
 
 bitxorvariabel = bitXor(4, 5)
 
+print "\nOppgave 3\n"
+
 print "bitxorvariabel = %d" % bitxorvariabel
 
 #
@@ -88,6 +95,8 @@ def bitOr(x, y):
 	return x | y
 
 bitorvariabel = bitOr(0, 1)
+
+print "\nOppgave 4\n"
 
 print "bitorvariabel = %d" % bitorvariabel
 
@@ -118,6 +127,8 @@ def ascii8Bin(letter):
     enBin = ord(letter)
     return "{0:08b}".format(enBin)
 
+print "\nOppgave 5\n"
+
 ascii_letter = ascii8Bin("J")
 print "J i binær = %s" % ascii_letter
 
@@ -137,6 +148,8 @@ def transferBin(string):
             # skriv ut den binære representasjon av hvert tegn (bruk ascii8Bin funksjonen din)
         print "Den binære representasjonen for %s" % c
         print ascii8Bin(c)
+
+print "\nOppgave 6\n"
 
 transferBin("Hallo")
 
@@ -158,6 +171,8 @@ def transferHex(string):
         print "Den heksadesimale representasjonen for %s" % c
         print ascii2_hex(c)
 
+print "\nOppgave 7\n"
+
 transferHex("Hallo")
 
 #
@@ -174,8 +189,9 @@ def unicodeBin(character):
         # Konverterer listen til en string bestående av den binære koden til
         # symbolet
         uni_bin = ' '.join(uba)
-
     return uni_bin
+
+print "\nOppgave 8\n"
 
 print unicodeBin("å")
 #
@@ -197,7 +213,21 @@ print unicodeBin("å")
 #	Hvilke andre muligheter har man for å finne informasjon om maskinvare i GNU/Linux?
 #
 def printSysInfo():
-    print "Operating system: %s" % (platform.linux_distribution(), )
+	#Hard drive capacity
+	diskUsage = psutil.disk_usage('/')
+	print "Disk capacity:", diskUsage.total/1000000000, "GB"
+	#Amount of RAM
+	mem = psutil.virtual_memory()
+	print "Memory total:", mem.total/1000000, "mb"
+	#Model and speed of CPU
+	#Display resolution and size
+	scrnsize = subprocess.Popen('xrandr | grep "\*" | cut -d" " -f4',shell=True, stdout=subprocess.PIPE).communicate()[0]
+	print "Your screen resolution:", scrnsize
+	#Operating system !using psutil
+	pf = platform.platform()
+	print "Your platform:", pf
+
+print "\nOppgave 9\n"
 
 printSysInfo()
 
