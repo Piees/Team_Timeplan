@@ -205,9 +205,10 @@ transferHex("19al")
 print "oppgave 8"
 
 def unicodeBin(character):
-	l = ord(character)
-	tilBin = "{0:08b}".format(l)
-	print(tilBin)
+	enBin = ord(character.decode("utf8"))
+	tilBin = "{0:08b}".format(enBin)
+	#print "%s er %s" % (letter, tilBin)
+	return tilBin
 
 unicodeBin("å")
 
@@ -248,7 +249,7 @@ def printSysInfo():
 	print "your platform:", pf
 
 printSysInfo()
-print "test"
+print "{0:08b}".format('c3 a5')
 unicodeBin('å')
 
 def test():
