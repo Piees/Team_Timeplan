@@ -164,15 +164,16 @@ transferHex("Janis")
 # Oppgave 8
 # 		Implementer en funksjon unicodeBin, som kan behandle norske bokstaver
 # 		Kravspesifikasjon for denne funksjonen er den samme som for ascii8Bin funksjonen
-#def unicodeBin(character):
-    #print "test1"
-    #uni_character = unicode(character, "utf-8")
-    #print "test2"
-    #print uni_character
-    #return "{0:08b}".format(uni_character)
-    #print "test3"
+def unicodeBin(character):
+    utf8_byte_array = bytearray(format(character))
+    uba = []
+    for n in range(len(format(character))):
+        uba.append("{0:08b}".format(utf8_byte_array[n]))
+        uni_bin = ' '.join(uba)
 
-#print unicodeBin("å")
+    return uni_bin
+
+print unicodeBin("å")
 #
 # Oppgave 9
 # 	Studer python module psutils (må være obs på versjon)
