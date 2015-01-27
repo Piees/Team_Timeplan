@@ -167,8 +167,12 @@ transferHex("Janis")
 def unicodeBin(character):
     utf8_byte_array = bytearray(format(character))
     uba = []
+    # Itererer gjennom det formaterte unicodesymbolet
     for n in range(len(format(character))):
+        # Legger den binære versjonen av symbolet i en liste
         uba.append("{0:08b}".format(utf8_byte_array[n]))
+        # Konverterer listen til en string bestående av den binære koden til
+        # symbolet
         uni_bin = ' '.join(uba)
 
     return uni_bin
