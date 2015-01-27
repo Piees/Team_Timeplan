@@ -138,7 +138,7 @@ def transferBin(string):
         print "Den binære representasjonen for %s" % c
         print ascii8Bin(c)
 
-transferBin("Janis")
+transferBin("Hallo")
 
 #
 #  Oppgave 7
@@ -158,7 +158,7 @@ def transferHex(string):
         print "Den heksadesimale representasjonen for %s" % c
         print ascii2_hex(c)
 
-transferHex("Janis")
+transferHex("Hallo")
 
 #
 # Oppgave 8
@@ -202,17 +202,20 @@ def printSysInfo():
 printSysInfo()
 
 def test():
-	assert bitAnd(6, 5) == 4
-	assert bitXor(4, 5) == 1
-	assert bitOr(0, 1) == 1
-	assert ascii8Bin('a') == '01100001'
-	assert ascii8Bin('A') == '01000001'
-	# Skriv her inn passende tester for tarnsferBin og transferHex funksjoner
-	# fra oppgavene 6 og 7
-	assert unicodeBin('å') == '11100101'
-	# Dine egne tester
-	return "Testene er fullført uten feil."
+    print "\n*******************************************\n"
+    assert bitAnd(6, 5) == 4
+    assert bitXor(4, 5) == 1
+    assert bitOr(0, 1) == 1
+    assert ascii8Bin('a') == '01100001'
+    assert ascii8Bin('A') == '01000001'
+    # Skriv her inn passende tester for tarnsferBin og transferHex funksjoner
+    # fra oppgavene 6 og 7
+    assert ascii2_hex('a') == '61'
+    assert ascii2_hex('A') == '41'
+    assert unicodeBin('å') == '11000011 10100101'
+    # Dine egne tester
+    return "Testene er fullført uten feil."
 
-
+print test()
 # Bruk denne funksjonen for å vise at alle testene er kjørt feilfritt
 #print test()
