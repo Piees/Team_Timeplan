@@ -16,6 +16,7 @@ import platform
 gruppe = {  'student1': 'Yngve Olsen Ranestad', \
 			'student2': 'Arild Høyland', \
             'student3': 'Steffen Sande', \
+            'student4': 'Håkon Gilje', \
             'student5': 'Even Adrian Nilsen', \
             'student6': 'Håkon Dale', \
             'student7': 'Øistein Syversen Fongaard', \
@@ -189,7 +190,6 @@ def printSysInfo():
 printSysInfo()
 
 def test():
-    print "\n*******************************************\n"
     assert bitAnd(6, 5) == 4
     assert bitXor(4, 5) == 1
     assert bitOr(0, 1) == 1
