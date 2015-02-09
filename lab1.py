@@ -178,7 +178,12 @@ transferHex("python")
 # 		Kravspesifikasjon for denne funksjonen er den samme som for ascii8Bin funksjonen
 print "oppgave 8"
 
+def unicodeBin(character):
+    l = ord(character)
+    tilBin = "{0:08b}".format(l)
+    print(tilBin)
 
+unicodeBin("å")
 
 #
 # Oppgave 9
