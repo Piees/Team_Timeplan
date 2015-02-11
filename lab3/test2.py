@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 '''
 def unic(character):
     utf8_byte_array = bytearray(format(character))
@@ -38,31 +41,48 @@ def unic(character):
             uba[1] = str(uba[1]).replace("101", "100", 1)
         uni_bin = ' '.join(str(uba))
     return uni_bin
+
+ ##DETTE ER KODEN VI PRooVER aa Faa FLIPPA BIN NUMMER FOR aa Faa CAPSLOCK
+def unicodeBin(character):
+    utf8_byte_array = bytearray(format(character))
+    uba = []
+    # Itererer gjennom det formaterte unicodesymbolet
+    for n in range(len(format(character))):
+        # Legger den binære versjonen av symbolet i en liste
+        uba.append("{0:08b}".format(utf8_byte_array[n]))
+        # Konverterer listen til en string bestående av den binære koden til
+        # symbolet
+        uni_bin = ' '.join(uba)
+    return uni_bin
 '''
- ##DETTE ER KODEN VI PRØVER Å FÅ FLIPPA BIN NUMMER FOR Å FÅ CAPSLOCK
+
 def flip(var):
     a = ''
-    calc = '0' + var
-    #print "var is: " + calc
-    #if len(calc) == 7:
-    #    pass
+    print "var er: " + var
+    #calc = '0' + var
+    calc = var.replace('b', '')
+    if len(calc) == 7:
+        pass
     if calc[2] == '0':
         a = calc[:2] + '1' + calc[3:]
     else:
         a = calc[:2] + '0' + calc[3:]
     return a
 inbin = []
-sentence = 'as d'
+sentence = 'å'
+swtc = False
 def uni():
     for n in sentence:
-        #print n
-        if len(n) == 7:
-            pass
+        print "n er: " + n
+        if unicodeBin(n) == '11000011':
+            print "funker dette?"
+            swtc = True
+        elif swtc == True:
+            inbin.append('11000011 ' + flip(bin(ord(n))))
+            print "inbin er: " + inbin
         else:
-            inbin.append(flip(bin(ord(n))[2:]))
-        #print inbin
-        #print flip(inbin)
-    #print inbin
+            inbin.append(flip(bin(ord(n))))
+            swtc = False
+        print inbin
     for x in range(len(inbin)):
         print chr(int(inbin[x], 2))
-    #print chr(int(inbin, 2))
