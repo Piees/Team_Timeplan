@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import lab2
 from socket import *
 serverPort = 12000
 serverSocket = socket(AF_INET,SOCK_STREAM)
@@ -10,8 +11,15 @@ print 'The server is ready to receive'
 svar = ''
 while 1:
     connectionSocket, addr = serverSocket.accept()
-    letter = connectionSocket.recv(1024)
+    received = connectionSocket.recv(1024)
     #capitalizedletter = letter.upper()
+    if received[1] == 'roman':
+        svar = lab2.romanmath(received[0][0], received[0][1], received[0][2])
+    elif received[1] == 'uni':
+        print 'tbd'
+    else:
+        print "you suck"
+    '''
     def flipbit(var): #hovedmetode
         ba = ' '.join(format(x, 'b') for x in bytearray(var)) #håndterer input
         bb = '0'+ba #fixer cutout av 0 før b
@@ -54,5 +62,6 @@ while 1:
     else:
         svar = chr(int(str(flipped),2))
     print svar
+    '''
     connectionSocket.send(svar)
     connectionSocket.close()
