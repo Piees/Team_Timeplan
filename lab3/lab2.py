@@ -84,10 +84,10 @@ ops = {"+": operator.add,
 
 def romanmath(par1, op, par2):
     if op == '+':
-        print dec2roman(roman2dec(par1) + roman2dec(par2))
+        return dec2roman(roman2dec(par1) + roman2dec(par2))
     elif op == '-':
-        print dec2roman(roman2dec(par1) - roman2dec(par2))
+        return dec2roman(roman2dec(par1) - roman2dec(par2))
     elif op == '*':
-        print dec2roman(roman2dec(par1) * roman2dec(par2))
+        return dec2roman(roman2dec(par1) * roman2dec(par2))
     elif op == '/':
-        print dec2roman(roman2dec(par1) / roman2dec(par2))
+        return dec2roman(roman2dec(par1) / roman2dec(par2))

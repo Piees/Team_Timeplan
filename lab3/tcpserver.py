@@ -8,17 +8,22 @@ serverSocket = socket(AF_INET,SOCK_STREAM)
 serverSocket.bind(('',serverPort))
 serverSocket.listen(1)
 print 'The server is ready to receive'
-svar = ''
 while 1:
     connectionSocket, addr = serverSocket.accept()
     received = connectionSocket.recv(1024)
     #capitalizedletter = letter.upper()
-    if received[1] == 'roman':
+    fish = received.split(' ')
+    toproc = fish.pop
+    svar = ''
+    if toproc == 'roman':
         svar = lab2.romanmath(received[0][0], received[0][1], received[0][2])
-    elif received[1] == 'uni':
+    elif toproc == 'uni':
         print 'tbd'
     else:
         print "you suck"
+        print "received" + received
+        svar = lab2.romanmath(fish[0], fish[1], fish[2])
+        print "svar" + svar
     '''
     def flipbit(var): #hovedmetode
         ba = ' '.join(format(x, 'b') for x in bytearray(var)) #håndterer input
