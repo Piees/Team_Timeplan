@@ -12,7 +12,7 @@ if wtd == '1':
     letter = raw_input("Type: <first number> <operator> <second number> with spaces")
     romansend = letter.split(' ')
     romaninf = [romansend, 'roman']
-    clientSocket.send(romaninf) 
+    clientSocket.send(romaninf)
 elif wtd == '2':
     unisend = raw_input("What do you want caps lockified?")
     uniinf = [unisend, 'uni']
