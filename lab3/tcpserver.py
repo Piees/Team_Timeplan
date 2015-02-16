@@ -2,9 +2,11 @@
 # -*- coding: utf-8 -*-
 
 import lab2
+import basecode
 from socket import *
 serverPort = 12000
 serverSocket = socket(AF_INET,SOCK_STREAM)
+#serverSocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 serverSocket.bind(('',serverPort))
 serverSocket.listen(1)
 print 'The server is ready to receive'
@@ -12,18 +14,26 @@ while 1:
     connectionSocket, addr = serverSocket.accept()
     received = connectionSocket.recv(1024)
     #capitalizedletter = letter.upper()
-    fish = received.split(' ')
-    toproc = fish.pop
+    prcd = received.split(' ')
+    toproc = str(prcd.pop)
     svar = ''
-    if toproc == 'roman':
-        svar = lab2.romanmath(received[0][0], received[0][1], received[0][2])
-    elif toproc == 'uni':
-        print 'tbd'
+    if prcd[len(prcd) - 1] == 'roman':
+        print "EUREKA!!"
+        svar = lab2.romanmath(prcd[0], prcd[1], prcd[2])
+    elif prcd[len(prcd) - 1] == 'uni':
+        print "dickbutt"
+        bode = ''.join(received)
+        bode = bode.replace('uni', '')
+        print bode
+        svar = bode.decode('utf-8').upper().encode('utf-8')
+        #svar = flipbit(bode)
+        print svar
     else:
-        print "you suck"
-        print "received" + received
-        svar = lab2.romanmath(fish[0], fish[1], fish[2])
-        print "svar" + svar
+        print "you suck "
+        print "received " + received
+        print toproc
+        print "svar " + svar
+        svar = lab2.romanmath(prcd[0], prcd[1], prcd[2])
     '''
     def flipbit(var): #hovedmetode
         ba = ' '.join(format(x, 'b') for x in bytearray(var)) #håndterer input
