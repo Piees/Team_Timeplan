@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import lab2
-import basecode
+from basecode_w_bugs import flips
 from socket import *
 serverPort = 12000
 serverSocket = socket(AF_INET,SOCK_STREAM)
@@ -20,13 +20,15 @@ while 1:
     if prcd[len(prcd) - 1] == 'roman':
         print "EUREKA!!"
         svar = lab2.romanmath(prcd[0], prcd[1], prcd[2])
+        connectionSocket.send(svar)
     elif prcd[len(prcd) - 1] == 'uni':
         print "dickbutt"
         bode = ''.join(received)
         bode = bode.replace('uni', '')
         print bode
         svar = bode.decode('utf-8').upper().encode('utf-8')
-        #svar = flipbit(bode)
+        #svar = flips(bode) denne er work in progress
+        connectionSocket.send(svar)
         print svar
     else:
         print "you suck "
@@ -78,5 +80,5 @@ while 1:
         svar = chr(int(str(flipped),2))
     print svar
     '''
-    connectionSocket.send(svar)
+    #connectionSocket.send(svar)
     connectionSocket.close()
