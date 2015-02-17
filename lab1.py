@@ -16,6 +16,7 @@ import platform
 gruppe = {  'student1': 'Yngve Olsen Ranestad', \
 			'student2': 'Arild Høyland', \
             'student3': 'Steffen Sande', \
+            'student4': 'Håkon Gilje', \
             'student5': 'Even Adrian Nilsen', \
             'student6': 'Håkon Dale', \
             'student7': 'Øistein Syversen Fongaard', \
@@ -61,14 +62,7 @@ ascii_bird()
 #					er 4 desimalt. Antagelse: posisjonsbasert tallsystem og
 #					den mest signifikante bit-en er lengst til venstre
 def bitAnd(x, y):
-	print "%d and %d" %(x, y)
 	return x & y
-
-bitandvariabel = bitAnd(6, 5)
-
-print "\nOppgave 2\n"
-
-print "bitandvariabel = %d" % bitandvariabel
 
 #
 #  Oppgave 3
@@ -76,14 +70,7 @@ print "bitandvariabel = %d" % bitandvariabel
 #    Eksempel: bitXor(4, 5) = 1
 #
 def bitXor(x, y):
-	print "%d xor %d" % (x, y)
 	return x ^ y
-
-bitxorvariabel = bitXor(4, 5)
-
-print "\nOppgave 3\n"
-
-print "bitxorvariabel = %d" % bitxorvariabel
 
 #
 #  Oppgave 4
@@ -91,15 +78,7 @@ print "bitxorvariabel = %d" % bitxorvariabel
 #    Eksempel: bitOr(0, 1) = 1
 #
 def bitOr(x, y):
-	print "%d or %d" % (x,y)
 	return x | y
-
-bitorvariabel = bitOr(0, 1)
-
-print "\nOppgave 4\n"
-
-print "bitorvariabel = %d" % bitorvariabel
-
 #
 #  Oppgave 5
 #
@@ -127,11 +106,6 @@ def ascii8Bin(letter):
     enBin = ord(letter)
     return "{0:08b}".format(enBin)
 
-print "\nOppgave 5\n"
-
-ascii_letter = ascii8Bin("J")
-print "J i binær = %s" % ascii_letter
-
 #
 #  Oppgave 6
 #    transferBin - ta en tilfeldig streng som argument og skriver ut en blokk av 8-bits strenger
@@ -145,13 +119,7 @@ print "J i binær = %s" % ascii_letter
 def transferBin(string):
     l = list(string)
     for c in l:
-            # skriv ut den binære representasjon av hvert tegn (bruk ascii8Bin funksjonen din)
-        print "Den binære representasjonen for %s" % c
-        print ascii8Bin(c)
-
-print "\nOppgave 6\n"
-
-transferBin("Hallo")
+        return ascii8Bin(c)
 
 #
 #  Oppgave 7
@@ -168,12 +136,7 @@ def ascii2_hex(letter):
 def transferHex(string):
     l = list(string)
     for c in l:
-        print "Den heksadesimale representasjonen for %s" % c
-        print ascii2_hex(c)
-
-print "\nOppgave 7\n"
-
-transferHex("Hallo")
+        return ascii2_hex(c)
 
 #
 # Oppgave 8
@@ -191,9 +154,6 @@ def unicodeBin(character):
         uni_bin = ' '.join(uba)
     return uni_bin
 
-print "\nOppgave 8\n"
-
-print unicodeBin("å")
 #
 # Oppgave 9
 # 	Studer python module psutils (må være obs på versjon)
@@ -227,12 +187,9 @@ def printSysInfo():
 	pf = platform.platform()
 	print "Your platform:", pf
 
-print "\nOppgave 9\n"
-
 printSysInfo()
 
 def test():
-    print "\n*******************************************\n"
     assert bitAnd(6, 5) == 4
     assert bitXor(4, 5) == 1
     assert bitOr(0, 1) == 1
