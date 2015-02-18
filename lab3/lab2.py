@@ -63,7 +63,7 @@ def dec2roman(dec):
             result = result + digit * 'M'
 
         elif dec_len >= 5:
-            # Thousands
+            # storre enn Thousands
             result = result + digit * '''Learning time: Roman doesn\'t use that high numbers\n'''
 
         else:
@@ -84,10 +84,10 @@ ops = {"+": operator.add,
 
 def romanmath(par1, op, par2):
     if op == '+':
-        print dec2roman(roman2dec(par1) + roman2dec(par2))
+        return dec2roman(roman2dec(par1) + roman2dec(par2))
     elif op == '-':
-        print dec2roman(roman2dec(par1) - roman2dec(par2))
+        return dec2roman(roman2dec(par1) - roman2dec(par2))
     elif op == '*':
-        print dec2roman(roman2dec(par1) * roman2dec(par2))
+        return dec2roman(roman2dec(par1) * roman2dec(par2))
     elif op == '/':
-        print dec2roman(roman2dec(par1) / roman2dec(par2))
+        return dec2roman(roman2dec(par1) / roman2dec(par2))

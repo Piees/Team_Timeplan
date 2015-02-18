@@ -2,23 +2,40 @@
 # -*- coding: utf-8 -*-
 
 import lab2
+from basecode_w_bugs import flips
 from socket import *
 serverPort = 12000
 serverSocket = socket(AF_INET,SOCK_STREAM)
+#serverSocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 serverSocket.bind(('',serverPort))
 serverSocket.listen(1)
 print 'The server is ready to receive'
-svar = ''
 while 1:
     connectionSocket, addr = serverSocket.accept()
     received = connectionSocket.recv(1024)
     #capitalizedletter = letter.upper()
-    if received[1] == 'roman':
-        svar = lab2.romanmath(received[0][0], received[0][1], received[0][2])
-    elif received[1] == 'uni':
-        print 'tbd'
+    prcd = received.split(' ')
+    toproc = str(prcd.pop)
+    svar = ''
+    if prcd[len(prcd) - 1] == 'roman':
+        print "EUREKA!!"
+        svar = lab2.romanmath(prcd[0], prcd[1], prcd[2])
+        connectionSocket.send(svar)
+    elif prcd[len(prcd) - 1] == 'uni':
+        print "dickbutt"
+        bode = ''.join(received)
+        bode = bode.replace('uni', '')
+        print bode
+        svar = bode.decode('utf-8').upper().encode('utf-8')
+        #svar = flips(bode) denne er work in progress
+        connectionSocket.send(svar)
+        print svar
     else:
-        print "you suck"
+        print "you suck "
+        print "received " + received
+        print toproc
+        print "svar " + svar
+        svar = lab2.romanmath(prcd[0], prcd[1], prcd[2])
     '''
     def flipbit(var): #hovedmetode
         ba = ' '.join(format(x, 'b') for x in bytearray(var)) #håndterer input
@@ -63,5 +80,5 @@ while 1:
         svar = chr(int(str(flipped),2))
     print svar
     '''
-    connectionSocket.send(svar)
+    #connectionSocket.send(svar)
     connectionSocket.close()
