@@ -11,7 +11,11 @@ wtd = raw_input("1 for roman math, 2 for caps lockifying")
 if wtd == '1':
     letter = raw_input("Type: <first number> <operator> <second number> with spaces")
     romansend = letter.split(' ')
+<<<<<<< HEAD
     romaninf = [romansend, 'roman']
+=======
+    #romaninf = [romansend, 'roman']
+>>>>>>> fbe3432ee98bad16e926122852e1762d22a3b589
     romaninf = letter + ' roman'
     clientSocket.send(romaninf)
 elif wtd == '2':
