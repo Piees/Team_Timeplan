@@ -1,0 +1,27 @@
+1. shift left og shift right er mye brukte begrep i dataverden. disse er operasjonsbinære tegn
+10100101 er en byte, shift left gjør det til 01010010 siden det dytter til venstre.
+spørsmål: hvis vi bruker shift-left på binære taller 00000001 så får vi 00000010 (det dobler verdien). tips: det er gitt at vi starter med binære regelen om å starte fra høyre, ellers blir tallet (00000010) til 64.
+2. hva er 1024? 1 kilobyte
+3. hvor mange bit trenger man for å representere 1024 binært? 11 bit
+svar: janis lurer klassen med fantastisk norsk-skills. han mente for å representere 1024 forskjellige verdier så holder det med 11 siden han teller med 0.
+an = b
+logab = n
+for å representere 36 kan vi tar log236 = 5.16 men vi må ha 6
+vi fant nå ut av 1024 er kibibit
+
+Kibibit er en enhet for måling av informasjonsmengde (datamengde). Kibibit er ikke en SI-enhet, men enheten er godkjent av International Electrotechnical Commission (IEC). En kibibit er lik 210 = 1024 bit. Se binærprefiks og kibibyte. Symbolet for kibibit er Kib.
+source: wiki
+
+client kode starter i egen *ting?*
+python myclient.py #for å starter egen prosess på denne platformen
+om man starter det remote så blir det ikke startet på din enhet
+python server.py #er egen prosses med egen ressurser og platform
+platformene kan være samme på disse prossesene
+beregne primtall for mange ganger på en server kan lage et ddos
+
+lab4:
+node kan være virtuel, men da blir ram også virtuel
+node = platform = operativ system + hardware
+hovedoppgaven: generer en deck (antar 52 kort, 4 forskjellige typer, kortverdier 2-9 + knekt + dame + konge + ess, 2s(2spade), 7h(7hearths), 3d(3diamonds), 9c(clover))
+[r+s for r in ‘23456789TJQKA’ for s in ‘SHDC’]
+random.shuffle(mydeck) #endrer variablen
