@@ -8,11 +8,15 @@
 #
 #
 import sys
+import psutil
+import subprocess
+import platform
 
 # Skriv inn fullt navn på gruppemedlemene (erstatte '-' med navn slikt 'Kari Trå')
 gruppe = {  'student1': 'Yngve Olsen Ranestad', \
 			'student2': 'Arild Høyland', \
             'student3': 'Steffen Sande', \
+            'student4': 'Håkon Gilje', \
             'student5': 'Even Adrian Nilsen', \
             'student6': 'Håkon Dale', \
             'student7': 'Øistein Syversen Fongaard', \
@@ -20,8 +24,8 @@ gruppe = {  'student1': 'Yngve Olsen Ranestad', \
 
 print "Gruppemedlemmer:"
 # Print alle 'values' i dictionary gruppe
-for k, v in gruppe.items():
-    print "\t%s" % v
+for key, value in gruppe.items():
+    print "\t%s" % value
 
 #
 #  Oppgave 1
@@ -46,6 +50,7 @@ def ascii_bird():
      (./
       '`
      """
+print "\nOppgave 1\n"
 
 ascii_bird()
 #
@@ -59,12 +64,7 @@ ascii_bird()
 #					den mest signifikante bit-en er lengst til venstre
 print "oppgave 2"
 def bitAnd(x, y):
-	print "%d and %d" %(x, y)
 	return x & y
-
-bitandvariabel = bitAnd(6, 5)
-
-print "bitandvariabel = %d" % bitandvariabel
 
 #
 #  Oppgave 3
@@ -73,12 +73,7 @@ print "bitandvariabel = %d" % bitandvariabel
 #
 print "oppgave 3"
 def bitXor(x, y):
-	print "%d xor %d" % (x, y)
 	return x ^ y
-
-bitxorvariabel = bitXor(4, 5)
-
-print "bitxorvariabel = %d" % bitxorvariabel
 
 #
 #  Oppgave 4
@@ -87,13 +82,7 @@ print "bitxorvariabel = %d" % bitxorvariabel
 #
 print "oppgave 4"
 def bitOr(x, y):
-	print "%d or %d" % (x,y)
 	return x | y
-
-bitorvariabel = bitOr(0, 1)
-
-print "bitorvariabel = %d" % bitorvariabel
-
 #
 #  Oppgave 5
 #
@@ -119,12 +108,17 @@ print "bitorvariabel = %d" % bitorvariabel
 #
 print "oppgave 5"
 def ascii8Bin(letter):
+<<<<<<< HEAD
 	enBin = ord(letter)
 	tilBin = "{0:8b}".format(enBin)
 	print(tilBin)
 
 print "g i binær = "
 ascii8Bin("g")
+=======
+    enBin = ord(letter)
+    return "{0:08b}".format(enBin)
+>>>>>>> 805fe3c906057ba3d3957849159ceb3e3c7a0cf2
 
 #
 #  Oppgave 6
@@ -138,12 +132,18 @@ ascii8Bin("g")
 #
 print "oppgave 6"
 def transferBin(string):
+<<<<<<< HEAD
 	l = list(string)
 	for c in l:
 
          ascii8Bin(c)
 
 print transferBin('python')
+=======
+    l = list(string)
+    for c in l:
+        return ascii8Bin(c)
+>>>>>>> 805fe3c906057ba3d3957849159ceb3e3c7a0cf2
 
 #
 #  Oppgave 7
@@ -153,6 +153,7 @@ print transferBin('python')
 #					med 2 heksadesimale tegn
 #    Skriv selv inn tester ved å bruke assert i funksjonen test()
 #
+<<<<<<< HEAD
 
 print "oppgave 7"
 def ascii8Bin1(A):
@@ -161,16 +162,25 @@ def ascii8Bin1(A):
     return bokstavvalg
 
 ascii8Bin1("A")
+=======
+def ascii2_hex(letter):
+    ascii_letter = ord(letter)
+    return "{0:2x}".format(ascii_letter)
+>>>>>>> 805fe3c906057ba3d3957849159ceb3e3c7a0cf2
 
 def transferHex(string):
     l = list(string)
     for c in l:
+<<<<<<< HEAD
 
         print ascii8Bin1(c)
 
 
 transferHex("python")
 
+=======
+        return ascii2_hex(c)
+>>>>>>> 805fe3c906057ba3d3957849159ceb3e3c7a0cf2
 
 #
 # Oppgave 8
@@ -179,11 +189,24 @@ transferHex("python")
 print "oppgave 8"
 
 def unicodeBin(character):
+<<<<<<< HEAD
     l = ord(character)
     tilBin = "{0:08b}".format(l)
     print(tilBin)
 
 unicodeBin("å")
+=======
+    utf8_byte_array = bytearray(format(character))
+    uba = []
+    # Itererer gjennom det formaterte unicodesymbolet
+    for n in range(len(format(character))):
+        # Legger den binære versjonen av symbolet i en liste
+        uba.append("{0:08b}".format(utf8_byte_array[n]))
+        # Konverterer listen til en string bestående av den binære koden til
+        # symbolet
+        uni_bin = ' '.join(uba)
+    return uni_bin
+>>>>>>> 805fe3c906057ba3d3957849159ceb3e3c7a0cf2
 
 #
 # Oppgave 9
@@ -205,21 +228,36 @@ unicodeBin("å")
 #
 print "oppgave 9"
 def printSysInfo():
-	pass
+	#Hard drive capacity
+	diskUsage = psutil.disk_usage('/')
+	print "Disk capacity:", diskUsage.total/1000000000, "GB"
+	#Amount of RAM
+	mem = psutil.virtual_memory()
+	print "Memory total:", mem.total/1000000, "mb"
+	#Model and speed of CPU
+	#Display resolution and size
+	scrnsize = subprocess.Popen('xrandr | grep "\*" | cut -d" " -f4',shell=True, stdout=subprocess.PIPE).communicate()[0]
+	print "Your screen resolution:", scrnsize
+	#Operating system !using psutil
+	pf = platform.platform()
+	print "Your platform:", pf
 
+printSysInfo()
 
 def test():
-	assert bitAnd(6, 5) == 4
-	assert bitXor(4, 5) == 1
-	assert bitOr(0, 1) == 1
-	assert ascii8Bin('a') == '01100001'
-	assert ascii8Bin('A') == '01000001'
-	# Skriv her inn passende tester for tarnsferBin og transferHex funksjoner
-	# fra oppgavene 6 og 7
-	assert unicodeBin('å') == '11100101'
-	# Dine egne tester
-	return "Testene er fullført uten feil."
+    assert bitAnd(6, 5) == 4
+    assert bitXor(4, 5) == 1
+    assert bitOr(0, 1) == 1
+    assert ascii8Bin('a') == '01100001'
+    assert ascii8Bin('A') == '01000001'
+    # Skriv her inn passende tester for tarnsferBin og transferHex funksjoner
+    # fra oppgavene 6 og 7
+    assert ascii2_hex('a') == '61'
+    assert ascii2_hex('A') == '41'
+    assert unicodeBin('å') == '11000011 10100101'
+    # Dine egne tester
+    return "Testene er fullført uten feil."
 
-
+print test()
 # Bruk denne funksjonen for å vise at alle testene er kjørt feilfritt
 #print test()
