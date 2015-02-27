@@ -34,21 +34,15 @@ for key, value in gruppe.items():
 #    Funksjonen skal hete ascii_fugl() og skal være uten argumenter og uten returverdier
 #    Den skal skrive ut følgende når den brukes ascii_fugl
 #
-#       \/_
-#  \,   /( ,/
-#   \\\' ///
-#    \_ /_/
-#    (./
-#     '`
+
 def ascii_bird():
-	print """
-		   \\/_
-	  \\,   /( ,/
-	   \\\\\\' ///
-		\\_ /_/
-		(./
-		 '`
-	 """
+	print r"       \/_"
+	print r"  \,   /( ,/"
+	print r"   \\\' ///"
+	print r"    \_ /_/"
+	print r"    (./"
+	print r"     '`"
+	
 print "\nOppgave 1\n"
 
 ascii_bird()

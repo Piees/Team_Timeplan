@@ -10,35 +10,22 @@ serverSocket = socket(AF_INET,SOCK_STREAM)
 serverSocket.bind(('',serverPort))
 serverSocket.listen(1)
 print 'The server is ready to receive'
-try:
-    while 1:
-        connectionSocket, addr = serverSocket.accept()
-        received = connectionSocket.recv(1024)
-        #capitalizedletter = letter.upper()
-        prcd = received.split(' ')
-        toproc = str(prcd.pop)
-        svar = ''
-        if prcd[len(prcd) - 1] == 'roman':
-            print "EUREKA!!"
-            svar = lab2.romanmath(prcd[0], prcd[1], prcd[2])
-            connectionSocket.send(svar)
-        elif prcd[len(prcd) - 1] == 'uni':
-            print "dickbutt"
-            bode = ''.join(received)
-            bode = bode.replace('uni', '')
-            print bode
-            svar = bode.decode('utf-8').upper().encode('utf-8')
-            #svar = flips(bode) denne er work in progress
-            connectionSocket.send(svar)
-            print svar
-        else:
-            print "you suck "
-            print "received " + received
-            print toproc
-            print "svar " + svar
-            svar = lab2.romanmath(prcd[0], prcd[1], prcd[2])
-except:
-    connectionSocket.close()
-
-                        #connectionSocket.send(svar)
+while 1:
+	connectionSocket, addr = serverSocket.accept()
+	received = connectionSocket.recv(1024)
+	#capitalizedletter = letter.upper()
+	prcd = received.split(' ')
+	toproc = str(prcd.pop)
+	svar = ''
+	if prcd[len(prcd) - 1] == 'roman':
+		svar = lab2.romanmath(prcd[0], prcd[1], prcd[2])
+		connectionSocket.send(svar)
+	elif prcd[len(prcd) - 1] == 'uni':
+		bode = ''.join(received)
+		bode = bode.replace('uni', '')
+		print bode
+		svar = bode.decode('utf-8').upper().encode('utf-8')
+		#svar = flips(bode) denne er work in progress
+		connectionSocket.send(svar)
+		print svar            
 connectionSocket.close()
