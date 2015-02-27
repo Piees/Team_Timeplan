@@ -15,17 +15,17 @@ import platform
 # Skriv inn fullt navn på gruppemedlemene (erstatte '-' med navn slikt 'Kari Trå')
 gruppe = {  'student1': 'Yngve Olsen Ranestad', \
 			'student2': 'Arild Høyland', \
-            'student3': 'Steffen Sande', \
-            'student4': 'Håkon Gilje', \
-            'student5': 'Even Adrian Nilsen', \
-            'student6': 'Håkon Dale', \
-            'student7': 'Øistein Syversen Fongaard', \
+			'student3': 'Steffen Sande', \
+			'student4': 'Håkon Gilje', \
+			'student5': 'Even Adrian Nilsen', \
+			'student6': 'Håkon Dale', \
+			'student7': 'Øistein Syversen Fongaard', \
 }
 
 print "Gruppemedlemmer:"
 # Print alle 'values' i dictionary gruppe
 for key, value in gruppe.items():
-    print "\t%s" % value
+	print "\t%s" % value
 
 #
 #  Oppgave 1
@@ -41,14 +41,14 @@ for key, value in gruppe.items():
 #    (./
 #     '`
 def ascii_bird():
-    print """
-           \\/_
-      \\,   /( ,/
-       \\\\\\' ///
-        \\_ /_/
-        (./
-         '`
-     """
+	print """
+		   \\/_
+	  \\,   /( ,/
+	   \\\\\\' ///
+		\\_ /_/
+		(./
+		 '`
+	 """
 print "\nOppgave 1\n"
 
 ascii_bird()
@@ -103,8 +103,8 @@ def bitOr(x, y):
 #	 så den returnerer en string med størrelse 2
 #
 def ascii8Bin(letter):
-    enBin = ord(letter)
-    return "{0:08b}".format(enBin)
+	enBin = ord(letter)
+	return "{0:08b}".format(enBin)
 
 #
 #  Oppgave 6
@@ -117,9 +117,9 @@ def ascii8Bin(letter):
 #	 Skriv selv inn tester ved å bruke assert i funksjonen test()
 #
 def transferBin(string):
-    l = list(string)
-    for c in l:
-        return ascii8Bin(c)
+	l = list(string)
+	for c in l:
+		return ascii8Bin(c)
 
 #
 #  Oppgave 7
@@ -130,29 +130,31 @@ def transferBin(string):
 #    Skriv selv inn tester ved å bruke assert i funksjonen test()
 #
 def ascii2_hex(letter):
-    ascii_letter = ord(letter)
-    return "{0:2x}".format(ascii_letter)
+	ascii_letter = ord(letter)
+	return "{0:2x}".format(ascii_letter)
 
 def transferHex(string):
-    l = list(string)
-    for c in l:
-        return ascii2_hex(c)
+	ascil= []
+	l = list(string)
+	for c in l:
+		ascil.append(ascii2_hex(c))
+	return ascil
 
 #
 # Oppgave 8
 # 		Implementer en funksjon unicodeBin, som kan behandle norske bokstaver
 # 		Kravspesifikasjon for denne funksjonen er den samme som for ascii8Bin funksjonen
 def unicodeBin(character):
-    utf8_byte_array = bytearray(format(character))
-    uba = []
-    # Itererer gjennom det formaterte unicodesymbolet
-    for n in range(len(format(character))):
-        # Legger den binære versjonen av symbolet i en liste
-        uba.append("{0:08b}".format(utf8_byte_array[n]))
-        # Konverterer listen til en string bestående av den binære koden til
-        # symbolet
-        uni_bin = ' '.join(uba)
-    return uni_bin
+	utf8_byte_array = bytearray(character)
+	uba = []
+	# Itererer gjennom det formaterte unicodesymbolet
+	for n in range(len(character)):
+		# Legger den binære versjonen av symbolet i en liste
+		uba.append("{0:08b}".format(utf8_byte_array[n]))
+		# Konverterer listen til en string bestående av den binære koden til
+		# symbolet
+		uni_bin = ' '.join(uba)
+	return uni_bin
 
 #
 # Oppgave 9
@@ -180,9 +182,17 @@ def printSysInfo():
 	mem = psutil.virtual_memory()
 	print "Memory total:", mem.total/1000000, "mb"
 	#Model and speed of CPU
+	with open('/proc/cpuinfo') as f:
+		cores = 0
+		for line in f:
+			if "model name" in line:
+				mname = line.replace('	', '') #replace tab with nothing
+				cores += 1
+		print mname.strip('\n')
+		print "number of cores: " + str(cores)
 	#Display resolution and size
 	scrnsize = subprocess.Popen('xrandr | grep "\*" | cut -d" " -f4',shell=True, stdout=subprocess.PIPE).communicate()[0]
-	print "Your screen resolution:", scrnsize
+	print "Your screen resolution:", scrnsize.strip('\n')
 	#Operating system !using psutil
 	pf = platform.platform()
 	print "Your platform:", pf
@@ -190,19 +200,19 @@ def printSysInfo():
 printSysInfo()
 
 def test():
-    assert bitAnd(6, 5) == 4
-    assert bitXor(4, 5) == 1
-    assert bitOr(0, 1) == 1
-    assert ascii8Bin('a') == '01100001'
-    assert ascii8Bin('A') == '01000001'
-    # Skriv her inn passende tester for tarnsferBin og transferHex funksjoner
-    # fra oppgavene 6 og 7
-    assert ascii2_hex('a') == '61'
-    assert ascii2_hex('A') == '41'
-    assert unicodeBin('å') == '11000011 10100101'
-    # Dine egne tester
-    return "Testene er fullført uten feil."
+	assert bitAnd(6, 5) == 4
+	assert bitXor(4, 5) == 1
+	assert bitOr(0, 1) == 1
+	assert ascii8Bin('a') == '01100001'
+	assert ascii8Bin('A') == '01000001'
+	# Skriv her inn passende tester for tarnsferBin og transferHex funksjoner
+	# fra oppgavene 6 og 7
+	assert ascii2_hex('a') == '61'
+	assert ascii2_hex('A') == '41'
+	assert transferHex('aA') == ['61', '41']
+	assert unicodeBin('å') == '11000011 10100101'
+	# Dine egne tester
+	return "Testene er fullført uten feil."
 
 print test()
 # Bruk denne funksjonen for å vise at alle testene er kjørt feilfritt
-#print test()

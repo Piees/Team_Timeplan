@@ -1,5 +1,3 @@
-letter = raw_input('Type 1 letter: ')
-
 def flipbit(var):
     ba = ' '.join(format(x, 'b') for x in bytearray(var))
     bb = '0'+ba
@@ -40,7 +38,7 @@ def flips(letter):
         unia = chr(int(a.decode("utf-8"),2))
         unib = chr(int(b.decode("utf-8"),2))
         unified = unia + unib
-        svar = unified.decode("utf-8")
+        svar = unified
     else:
         svar = chr(int(str(flipped),2))
     return svar
