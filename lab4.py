@@ -149,14 +149,49 @@ def test():
 	op = "TD TC AD KD QD".split() # One Pair
 	hq = "2D 3D 4C 5H 7H".split() # High card
 	al = "AC 2D 4H 3D 5S".split() # Ace-Low Straight
+	tp1 = "7H 7D 9C 3C 9S".split() #Two Pair
+	fkranks = card_ranks(fk)
+	tpranks = card_ranks(tp)
+	op1 = "KH 7C 5S KS 2S".split() # One pair
+	tp2 = "TH 3S 2H 3D TC".split() # Two pair
+	tk1 = "TH JD JH 8C JC".split() # Three of kind
+	hq1 = "TH 9D 5C 3H 2C".split() # High card
+	assert poker([fh, tk, hq]) == fh #oistein start
+	assert poker([fl, sf1, tk]) == sf1
+	assert poker([op, al, fh]) == fh
+	assert poker([st, fk, tp]) == fk
+	assert poker([tk, tp, op]) == tk
+	assert poker([hq, op, hq]) == op
+	assert card_ranks(op1) == [13, 13, 7, 5, 2]
+	assert card_ranks(tp2) == [10, 10, 3, 3, 2]
+	assert card_ranks(tk1) == [11, 11, 11, 10, 8]
+	assert card_ranks(hq1) == [10, 9, 5, 3, 2] #oistein slutt
+	assert poker([tk, op, al]) == al #hakon dale start
+	assert poker([tp, tp1]) == tp
+	assert hand_rank(tp1) == (2, (9, 7), [9, 9, 7, 7, 3])
+	assert hand_rank(hq) == (0, [7, 5, 4, 3, 2])
+	assert hand_rank(st) == (4, 14)
+	assert card_ranks(op) ==[14, 13, 12, 10, 10]
+	assert card_ranks(tp1) == [9, 9, 7, 7, 3]
+	assert kind(3, tpranks) == None
+	assert kind(2, tpranks) == 10, 9
+	assert kind(1, tpranks) == 7 #hakon dale slutt
 	assert poker([hq, tp, op]) == tp#steffen start
 	assert poker([al, st]) == st
 	assert poker([al, st, fl]) == fl
 	assert card_ranks(hq) == [7, 5, 4, 3, 2]
 	assert card_ranks(fk) == [9, 9, 9, 9, 7]
 	assert card_ranks(fh) == [10, 10, 10, 7, 7]#steffen slutt
-	fkranks = card_ranks(fk)
-	tpranks = card_ranks(tp)
+	assert poker([sf2, tk, al]) == sf2#arild start
+	assert poker([hq, st]) == st
+	assert poker([al, st, fk]) == fk
+	assert flush(fl) == True
+	assert straight(card_ranks(tp)) == False
+	assert card_ranks(fk) == [9, 9, 9, 9, 7]
+	assert card_ranks(hq) == [7, 5, 4, 3, 2]
+	assert hand_rank(tk) == (3, 2, [14, 10, 2, 2, 2])
+	assert hand_rank(st) == (4, 14)
+	assert kind(5, tpranks) == None#arild slutt
 	assert poker([sf1, fk, fh]) == sf1
 	assert poker([fk, fh]) == fk
 	assert poker([fh, fh]) == [fh, fh]
