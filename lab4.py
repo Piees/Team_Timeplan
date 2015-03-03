@@ -142,8 +142,19 @@ def test():
 	sf2 = "6D 7D 8D 9D TD".split() # Straight Flush
 	fk = "9D 9H 9S 9C 7D".split() # Four of a Kind
 	fh = "TD TC TH 7C 7D".split() # Full House
-	tp = "TD 9H TH 7C 3S".split() # Two Pair
+	fl = "AH KH JH 6H TH".split() # Flush
+	st = "AH KC QD JD TS".split() # Straight
+	tk = "2H 2C 2D AC TD".split() # Three of kind
+	tp = "TD 9H TH 7C 9S".split() # Two Pair
+	op = "TD TC AD KD QD".split() # One Pair
+	hq = "2D 3D 4C 5H 7H".split() # High card
 	al = "AC 2D 4H 3D 5S".split() # Ace-Low Straight
+	assert poker([hq, tp, op]) == tp#steffen start
+	assert poker([al, st]) == st
+	assert poker([al, st, fl]) == fl
+	assert card_ranks(hq) == [7, 5, 4, 3, 2]
+	assert card_ranks(fk) == [9, 9, 9, 9, 7]
+	assert card_ranks(fh) == [10, 10, 10, 7, 7]#steffen slutt
 	fkranks = card_ranks(fk)
 	tpranks = card_ranks(tp)
 	assert poker([sf1, fk, fh]) == sf1
