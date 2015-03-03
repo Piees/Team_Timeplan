@@ -150,6 +150,7 @@ def test():
 	hq = "2D 3D 4C 5H 7H".split() # High card
 	al = "AC 2D 4H 3D 5S".split() # Ace-Low Straight
 	tp1 = "7H 7D 9C 3C 9S".split() #Two Pair
+	sf1 = "6C 7C 8C 9C TC".split() # Straight Flush
 	fkranks = card_ranks(fk)
 	tpranks = card_ranks(tp)
 	op1 = "KH 7C 5S KS 2S".split() # One pair
@@ -192,6 +193,16 @@ def test():
 	assert hand_rank(tk) == (3, 2, [14, 10, 2, 2, 2])
 	assert hand_rank(st) == (4, 14)
 	assert kind(5, tpranks) == None#arild slutt
+	assert poker([tp, op]) == tp #Even start
+	assert poker([hq, tk]) == tk
+	assert poker([sf1] + 50*[fl]) == sf1
+	assert card_ranks(sf1) == [10, 9, 8, 7, 6]
+	assert card_ranks(tk) == [14, 10, 2, 2, 2]
+	assert card_ranks(st) == [14, 13, 12, 11, 10]
+	assert kind(4, fkranks) == 9
+	assert kind(3, fkranks) == None
+	assert kind(2, tpranks) == 10
+	assert kind(1, fkranks) == 7 #Even slutt
 	assert poker([sf1, fk, fh]) == sf1
 	assert poker([fk, fh]) == fk
 	assert poker([fh, fh]) == [fh, fh]
