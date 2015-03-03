@@ -15,79 +15,74 @@ roman_re = re.compile("""^
 # hundreds. For example, the sixth element of the tens row yields the
 # value 50, as the first is 0.
 d2r_table = [
-    ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'],
-    ['', 'X', 'XX', 'XXX', 'XL', 'L', 'LX', 'LXX', 'LXXX', 'XC'],
-    ['', 'C', 'CC', 'CCC', 'CD', 'D', 'DC', 'DCC', 'DCCC', 'CM'],
-    ['M' * i for i in xrange(0,10) ]]
+	['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'],
+	['', 'X', 'XX', 'XXX', 'XL', 'L', 'LX', 'LXX', 'LXXX', 'XC'],
+	['', 'C', 'CC', 'CCC', 'CD', 'D', 'DC', 'DCC', 'DCCC', 'CM'],
+	['M' * i for i in xrange(0,10) ]]
 
 
 def roman2dec(roman):
-    """Converts a roman number, encoded in a string, to a decimal number."""
-    roman = roman.upper()
-    match = roman_re.match(roman)
+	"""Converts a roman number, encoded in a string, to a decimal number."""
+	roman = roman.upper()
+	match = roman_re.match(roman)
 
-    if not match:
-        raise ValueError
+	if not match:
+		raise ValueError
 
-    thousands, hundreds, tens, units = match.groups()
-    result =  d2r_table[3].index(thousands) * 1000
-    result += d2r_table[2].index(hundreds) * 100
-    result += d2r_table[1].index(tens) * 10
-    result += d2r_table[0].index(units)
-    return result
+	thousands, hundreds, tens, units = match.groups()
+	result =  d2r_table[3].index(thousands) * 1000
+	result += d2r_table[2].index(hundreds) * 100
+	result += d2r_table[1].index(tens) * 10
+	result += d2r_table[0].index(units)
+	return result
 
 
 def dec2roman(dec):
-    """Converts a positive decimal integer to a roman number."""
-    #if dec == 0:
-    #    return ''
+	"""Converts a positive decimal integer to a roman number."""
+	#if dec == 0:
+	#    return ''
 
-    digit = 0
-    rem = dec#100
-    result = ''
-    # Length in digits of the number dec
-    dec_len = int(math.ceil(math.log10(dec)) + 1) #3
+	digit = 0
+	rem = dec#100
+	result = ''
+	# Length in digits of the number dec
+	dec_len = int(math.ceil(math.log10(dec)) + 1) #3
 
-    # Scan the number digit-by-digit, starting from the MSD (most-significant
-    # digit)
-    while dec_len > 0:
-        # Let's take the current digit
-        factor = 10 ** (dec_len - 1) #100
-        digit = rem / factor #1
+	# Scan the number digit-by-digit, starting from the MSD (most-significant
+	# digit)
+	while dec_len > 0:
+		# Let's take the current digit
+		factor = 10 ** (dec_len - 1) #100
+		digit = rem / factor #1
 
-        # And remove it from the number
-        rem = rem - digit * factor #0??
+		# And remove it from the number
+		rem = rem - digit * factor #0??
 
-        if dec_len == 4:
-            # Thousands
-            result = result + digit * 'M'
+		if dec_len == 4:
+			# Thousands
+			result = result + digit * 'M'
 
-        elif dec_len >= 5:
-            # storre enn Thousands
-            result = result + digit * '''Learning time: Roman doesn\'t use that high numbers\n'''
+		elif dec_len >= 5:
+			# storre enn Thousands
+			result = result + digit * '''Learning time: Roman doesn\'t use that\
+			 high numbers\n'''
 
-        else:
-            # Look in the look-up table
-            result = result + d2r_table[dec_len - 1][digit]
+		else:
+			# Look in the look-up table
+			result = result + d2r_table[dec_len - 1][digit]
 
-        dec_len -= 1
+		dec_len -= 1
 
-    return result
+	return result
 
 #print dec2roman(13100)
 #print "Skriv lab2.romanmath('*forste tall*', '*operator*', '*andre tall*')"
 
 ops = {"+": operator.add,
-       "-": operator.sub,
-       "*": operator.mul,
-       "/": operator.div}
+	   "-": operator.sub,
+	   "*": operator.mul,
+	   "/": operator.div}
 
 def romanmath(par1, op, par2):
-    if op == '+':
-        return dec2roman(roman2dec(par1) + roman2dec(par2))
-    elif op == '-':
-        return dec2roman(roman2dec(par1) - roman2dec(par2))
-    elif op == '*':
-        return dec2roman(roman2dec(par1) * roman2dec(par2))
-    elif op == '/':
-        return dec2roman(roman2dec(par1) / roman2dec(par2))
+	#operator tar parameter par1 og par2 om til desimal
+	return dec2roman(ops[op](roman2dec(par1), roman2dec(par2)))
