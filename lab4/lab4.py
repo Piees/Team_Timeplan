@@ -208,8 +208,8 @@ def test():
 	assert kind(1, fkranks) == 7
         assert poker([tp, op]) == tp #Even start
         assert poker([hq, tk]) == tk
-        assert poker([stf1] + 50*[fl]) == stf1
-        assert card_ranks(stf1) == [10, 9, 8, 7, 6]
+        assert poker([sf1] + 50*[fl]) == sf1
+        assert card_ranks(sf1) == [10, 9, 8, 7, 6]
         assert card_ranks(tk) == [14, 10, 2, 2, 2]
         assert card_ranks(st) == [14, 13, 12, 11, 10]
         assert kind(4, fkranks) == 9
