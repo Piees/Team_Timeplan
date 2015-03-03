@@ -206,4 +206,14 @@ def test():
 	assert kind(3, fkranks) == None
 	assert kind(2, fkranks) == None
 	assert kind(1, fkranks) == 7
+        assert poker([tp, op]) == tp #Even start
+        assert poker([hq, tk]) == tk
+        assert poker([stf1] + 50*[fl]) == stf1
+        assert card_ranks(stf1) == [10, 9, 8, 7, 6]
+        assert card_ranks(tk) == [14, 10, 2, 2, 2]
+        assert card_ranks(st) == [14, 13, 12, 11, 10]
+        assert kind(4, fkranks) == 9
+        assert kind(3, fkranks) == None
+        assert kind(2, tpranks) == 10
+        assert kind(1, fkranks) == 7 #Even slutt
 	return 'You did good, and you should feel good about yourself :)'
