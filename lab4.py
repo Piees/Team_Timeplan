@@ -1,3 +1,11 @@
+# Gruppe: Team Timeplan
+# Yngve Olsen Ranestad
+# Steffen Sande
+# Even Nilsen
+# Øistein Fongaard
+# Håkon Dale
+# Håkon Gilje
+
 import random
 '''numhands = 4
 for c in range(1, numhands):
