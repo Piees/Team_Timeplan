@@ -1,3 +1,11 @@
+# Gruppe: Team Timeplan
+# Yngve Olsen Ranestad
+# Steffen Sande
+# Even Nilsen
+# ooistein Fongaard
+# Haakon Dale
+# Haakon Gilje
+
 import random
 '''numhands = 4
 for c in range(1, numhands):
@@ -138,6 +146,7 @@ def two_pair(ranks):
 
 def test():
 	"Test cases for the functions in poker program."
+	sf = "6C 7C 8C 9C TC".split() # Straight Flush
 	sf1 = "6C 7C 8C 9C TC".split() # Straight Flush
 	sf2 = "6D 7D 8D 9D TD".split() # Straight Flush
 	fk = "9D 9H 9S 9C 7D".split() # Four of a Kind
@@ -150,12 +159,26 @@ def test():
 	hq = "2D 3D 4C 5H 7H".split() # High card
 	al = "AC 2D 4H 3D 5S".split() # Ace-Low Straight
 	tp1 = "7H 7D 9C 3C 9S".split() #Two Pair
+	sf1 = "6C 7C 8C 9C TC".split() # Straight Flush
 	fkranks = card_ranks(fk)
 	tpranks = card_ranks(tp)
 	op1 = "KH 7C 5S KS 2S".split() # One pair
 	tp2 = "TH 3S 2H 3D TC".split() # Two pair
 	tk1 = "TH JD JH 8C JC".split() # Three of kind
 	hq1 = "TH 9D 5C 3H 2C".split() # High card
+	fk3 = "TC TS TH 2C TD".split() # Four of a Kind
+	f3 = "2C 4C 6C 7C TC".split() # Flush
+	s3 = "3C 4D 5H 6D 7H".split() # Straight
+	assert poker([fk3, f3, s3]) == fk3 #gilje start
+	assert poker([sf, 20*fk]) == sf
+	assert poker([fk3, 5*f3]) == fk3
+	assert card_ranks(fk3) == [10, 10, 10, 10, 2]
+	assert card_ranks(f3) == [10, 7, 6, 4, 2]
+	assert hand_rank(fk3) == (7, 10, 2)
+	assert hand_rank(f3) == (5, [10, 7, 6, 4, 2])
+	assert flush(f3) == True
+	assert straight(card_ranks(s3)) == True
+	assert straight(card_ranks(f3)) == False #gilje slutt
 	assert poker([fh, tk, hq]) == fh #oistein start
 	assert poker([fl, sf1, tk]) == sf1
 	assert poker([op, al, fh]) == fh
@@ -192,6 +215,16 @@ def test():
 	assert hand_rank(tk) == (3, 2, [14, 10, 2, 2, 2])
 	assert hand_rank(st) == (4, 14)
 	assert kind(5, tpranks) == None#arild slutt
+	assert poker([tp, op]) == tp #Even start
+	assert poker([hq, tk]) == tk
+	assert poker([sf1] + 50*[fl]) == sf1
+	assert card_ranks(sf1) == [10, 9, 8, 7, 6]
+	assert card_ranks(tk) == [14, 10, 2, 2, 2]
+	assert card_ranks(st) == [14, 13, 12, 11, 10]
+	assert kind(4, fkranks) == 9
+	assert kind(3, fkranks) == None
+	assert kind(2, tpranks) == 10
+	assert kind(1, fkranks) == 7 #Even slutt
 	assert poker([sf1, fk, fh]) == sf1
 	assert poker([fk, fh]) == fk
 	assert poker([fh, fh]) == [fh, fh]
