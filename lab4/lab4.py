@@ -34,8 +34,8 @@ pranks = ["high card", "Pair", "Two Pair", "Three of a kind", "Straight", \
 
 def poker(hands):
 	"Return a list of winning hands: poker([hand,...]) => [hand,...]"
-	#print "The winning hand had: " + \
-	   #pranks[hand_rank(allmax(hands,key=hand_rank))[0]]
+	print "The winning hand had: " + \
+	   pranks[hand_rank(allmax(hands,key=hand_rank))[0]]
 	#print hand_rank(allmax(hands,key=hand_rank))
 	return allmax(hands, key=hand_rank)
 
