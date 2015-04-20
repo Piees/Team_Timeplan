@@ -171,11 +171,15 @@ def unicodeBin(character):
 # 			Operating system
 #
 #	Forklar hvorfor man kan / ikke kan finne denne informasjon vha. psutil modulen.
-#		-
+#		-psutil finner informasjon på prossesser og har derfor ikke tilgang til
+#		-informasjon som cpu model etc. Psutil er derfor ikke lagt for å ha
+#		-tilgang til annen informasjon
 #	Skriv en funksjon printSysInfo som skriver ut den informasjon som psutil kan finne.
 #	Kan dere skrive en test for denne funksjonen?
+#		-Om vi skulle skrive en test på denne metoden måtte det vært spesifisert
+#		-maskinware eller hva som skal printes under hver kategori
 #	Hvilke andre muligheter har man for å finne informasjon om maskinvare i GNU/Linux?
-#
+#		-som vist under kan man bruke filene hvor informasjonen er lagret
 def printSysInfo():
 	#Hard drive capacity
 	diskUsage = psutil.disk_usage('/')
@@ -211,6 +215,7 @@ def test():
 	# fra oppgavene 6 og 7
 	assert ascii2_hex('a') == '61'
 	assert ascii2_hex('A') == '41'
+	assert transferBin("Hallo") == '01001000\n01100001\n01101100\n01101100\n01101111'
 	assert transferHex('aA') == '61\n41'
 	assert unicodeBin('å') == '11000011 10100101'
 	# Dine egne tester
