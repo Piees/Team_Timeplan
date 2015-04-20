@@ -1,5 +1,9 @@
 ﻿Svar til LAB01, IS-105, januar 2015
 
 Operatørprioritet vil si at noen operatører prioriteres over/foran andre. Dette er f. eks. Som i matematikk der multiplikasjon gjøres før addisjon/subtraksjon. I Python/programmeringsspråk vil også dette gjelde for andre slags operatører som and, or, not, etc.
-One's complement er verdien en får av å invertere binære tall (altså å bytte 0 med 1, og motsatt). 
-Pass er en “placeholder” i Python – gjør det mulig å definere en funksjon uten å implementere funksjonaliteten. 
+
+One's complement er verdien en får av å invertere binære tall (altså å bytte 0 med 1, og motsatt).
+eksempel på dette i praksis er en subnetmask (255.255.255.0) som bruker one's complement for å begrense antall ip adresser tilgjengelig.
+
+Pass er en “placeholder” i Python – gjør det mulig å definere en funksjon uten å implementere funksjonaliteten.
+Dette er særlig bra i start-fasen av et prosjekt når man oppretter metoder uten innhold
