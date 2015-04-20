@@ -112,15 +112,14 @@ def ascii8Bin(letter):
 #	 Skriv selv inn tester ved å bruke assert i funksjonen test()
 #
 
-# Vi har valgt å brukt print for å skrive ut binære verdien siden
-# vi ikke kan oppnå newline i en return
+# skrive print før metoden for å få printet returverdien på hver linje
 def transferBin(string):
-	binlist = []
-	l = list(string)
-	for c in l:
-		binlist.append(ascii8Bin(c))
-	binlist = "\n".join(binlist)
-	print binlist
+	binlist = [] #opprett en liste
+	l = list(string) #lag en liste av parameter i metoden
+	for c in l: #en for-løkke
+		binlist.append(ascii8Bin(c)) #legg til hvert returnerte i liste binlist
+	binlist = "\n".join(binlist) #gjør lista om til en streng med newlines
+	return binlist
 
 #
 #  Oppgave 7
@@ -139,6 +138,7 @@ def transferHex(string):
 	l = list(string)
 	for c in l:
 		ascil.append(ascii2_hex(c))
+	ascil = "\n".join(ascil)
 	return ascil
 
 #
@@ -171,6 +171,7 @@ def unicodeBin(character):
 # 			Operating system
 #
 #	Forklar hvorfor man kan / ikke kan finne denne informasjon vha. psutil modulen.
+#		-
 #	Skriv en funksjon printSysInfo som skriver ut den informasjon som psutil kan finne.
 #	Kan dere skrive en test for denne funksjonen?
 #	Hvilke andre muligheter har man for å finne informasjon om maskinvare i GNU/Linux?
@@ -210,10 +211,10 @@ def test():
 	# fra oppgavene 6 og 7
 	assert ascii2_hex('a') == '61'
 	assert ascii2_hex('A') == '41'
-	assert transferHex('aA') == ['61', '41']
+	assert transferHex('aA') == '61\n41'
 	assert unicodeBin('å') == '11000011 10100101'
 	# Dine egne tester
-	return "Testene er fullført uten feil."
+	return "Tests completed."
 
 print test()
 # Bruk denne funksjonen for å vise at alle testene er kjørt feilfritt
