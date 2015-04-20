@@ -211,15 +211,11 @@ def test():
 	assert bitOr(0, 1) == 1
 	assert ascii8Bin('a') == '01100001'
 	assert ascii8Bin('A') == '01000001'
-	# Skriv her inn passende tester for tarnsferBin og transferHex funksjoner
-	# fra oppgavene 6 og 7
 	assert ascii2_hex('a') == '61'
 	assert ascii2_hex('A') == '41'
 	assert transferBin("Hallo") == '01001000\n01100001\n01101100\n01101100\n01101111'
 	assert transferHex('aA') == '61\n41'
 	assert unicodeBin('å') == '11000011 10100101'
-	# Dine egne tester
 	return "Tests completed."
 
 print test()
-# Bruk denne funksjonen for å vise at alle testene er kjørt feilfritt
