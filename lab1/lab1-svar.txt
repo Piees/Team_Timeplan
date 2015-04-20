@@ -7,3 +7,7 @@ eksempel på dette i praksis er en subnetmask (255.255.255.0) som bruker one's c
 
 Pass er en “placeholder” i Python – gjør det mulig å definere en funksjon uten å implementere funksjonaliteten.
 Dette er særlig bra i start-fasen av et prosjekt når man oppretter metoder uten innhold
+
+kilder:
+http://en.wikipedia.org/wiki/Ones%27_complement
+http://www.tutorialspoint.com/python/operators_precedence_example.htm
