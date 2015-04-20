@@ -35,6 +35,7 @@ for key, value in gruppe.items():
 #    Den skal skrive ut følgende når den brukes ascii_fugl
 #
 
+# Vi gjør dette med print raw så vi slipper escapes
 def ascii_bird():
 	print r"       \/_"
 	print r"  \,   /( ,/"
@@ -42,7 +43,7 @@ def ascii_bird():
 	print r"    \_ /_/"
 	print r"    (./"
 	print r"     '`"
-	
+
 print "\nOppgave 1\n"
 
 ascii_bird()
@@ -110,10 +111,16 @@ def ascii8Bin(letter):
 #	 Forklart hver linje i denne funksjonen (hva er list, hva gjør in)
 #	 Skriv selv inn tester ved å bruke assert i funksjonen test()
 #
+
+# Vi har valgt å brukt print for å skrive ut binære verdien siden
+# vi ikke kan oppnå newline i en return
 def transferBin(string):
+	binlist = []
 	l = list(string)
 	for c in l:
-		return ascii8Bin(c)
+		binlist.append(ascii8Bin(c))
+	binlist = "\n".join(binlist)
+	print binlist
 
 #
 #  Oppgave 7
