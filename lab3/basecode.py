@@ -1,4 +1,4 @@
-#cyrillic bytter siste bit og har 11010011 som første bit
+#cyrillic bytter siste bit og har 11010011 som første byte
 
 def flipbit(var):
 	ba = ' '.join(format(x, 'b') for x in bytearray(var))
