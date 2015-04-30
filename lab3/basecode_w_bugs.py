@@ -1,3 +1,5 @@
+
+
 def flipbit(var):
 	ba = ' '.join(format(x, 'b') for x in bytearray(var))
 	bb = '0'+ba
