@@ -18,8 +18,7 @@ gruppe = {  'student1': 'Yngve Olsen Ranestad', \
 			'student3': 'Steffen Sande', \
 			'student4': 'Håkon Gilje', \
 			'student5': 'Even Adrian Nilsen', \
-			'student6': 'Håkon Dale', \
-			'student7': 'Øistein Syversen Fongaard', \
+			'student6': 'Øistein Syversen Fongaard', \
 }
 
 print "Gruppemedlemmer:"

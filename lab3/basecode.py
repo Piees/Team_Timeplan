@@ -1,4 +1,4 @@
-#cyrillic bytter siste bit og har 11010011 som første byte
+#cyrillic bytter siste bit og har 11010011 som forste byte
 
 def flipbit(var):
 	ba = ' '.join(format(x, 'b') for x in bytearray(var))
@@ -8,11 +8,20 @@ def flipbit(var):
 	if len(splitba) == 2:
 		prefix = splitba[0]
 		suffix = splitba[1]
+		print "fu kommer lista"
+		print splitba
+		print "kom lista?"
 		placeholder = '0'
-		if suffix[2] == '0':
-			placeholder = suffix[:2] + '1' + suffix[3:]
-		else:
-			placeholder = suffix[:2] + '0' + suffix[3:]
+		if prefix == '11000011': # latin simple, no accent
+			if suffix[2] == '0':
+				placeholder = suffix[:2] + '1' + suffix[3:]
+			else:
+				placeholder = suffix[:2] + '0' + suffix[3:]
+		if prefix == '11010011': #cyrillic
+			if suffix[2] == '0':
+				placeholder = suffix[:7] + '1'
+			else:
+				placeholder = suffix[:7] + '0'
 		flippedarray.append(prefix)
 		flippedarray.append(placeholder)
 		return flippedarray
