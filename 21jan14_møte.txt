@@ -1,5 +1,0 @@
-﻿Tilstede: fulltallig
-
-Saker: 
-sette opp seperate branches
-lab1.py
