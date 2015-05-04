@@ -18,14 +18,15 @@ gruppe = {  'student1': 'Yngve Olsen Ranestad', \
 			'student3': 'Steffen Sande', \
 			'student4': 'Håkon Gilje', \
 			'student5': 'Even Adrian Nilsen', \
-			'student6': 'Håkon Dale', \
-			'student7': 'Øistein Syversen Fongaard', \
+			'student6': 'Øistein Syversen Fongaard', \
 }
 
 print "Gruppemedlemmer:"
 # Print alle 'values' i dictionary gruppe
 for key, value in gruppe.items():
 	print "\t%s" % value
+
+
 
 #
 #  Oppgave 1
@@ -35,6 +36,7 @@ for key, value in gruppe.items():
 #    Den skal skrive ut følgende når den brukes ascii_fugl
 #
 
+# Vi gjør dette med print raw så vi slipper escapes
 def ascii_bird():
 	print r"       \/_"
 	print r"  \,   /( ,/"
@@ -42,10 +44,9 @@ def ascii_bird():
 	print r"    \_ /_/"
 	print r"    (./"
 	print r"     '`"
-	
-print "\nOppgave 1\n"
 
-ascii_bird()
+
+#ascii_bird()
 #
 #  Oppgave 2
 #    bitAnd - x&y
@@ -110,10 +111,15 @@ def ascii8Bin(letter):
 #	 Forklart hver linje i denne funksjonen (hva er list, hva gjør in)
 #	 Skriv selv inn tester ved å bruke assert i funksjonen test()
 #
+
+# skrive print før metoden for å få printet returverdien på hver linje
 def transferBin(string):
-	l = list(string)
-	for c in l:
-		return ascii8Bin(c)
+	binlist = [] #opprett en liste
+	l = list(string) #lag en liste av parameter i metoden
+	for c in l: #en for-løkke
+		binlist.append(ascii8Bin(c)) #legg til hvert returnerte i liste binlist
+	binlist = "\n".join(binlist) #gjør lista om til en streng med newlines
+	return binlist
 
 #
 #  Oppgave 7
@@ -132,6 +138,7 @@ def transferHex(string):
 	l = list(string)
 	for c in l:
 		ascil.append(ascii2_hex(c))
+	ascil = "\n".join(ascil)
 	return ascil
 
 #
@@ -164,10 +171,15 @@ def unicodeBin(character):
 # 			Operating system
 #
 #	Forklar hvorfor man kan / ikke kan finne denne informasjon vha. psutil modulen.
+#		-psutil finner informasjon på prossesser og har derfor ikke tilgang til
+#		-informasjon som cpu model etc. Psutil er derfor ikke lagt for å ha
+#		-tilgang til annen informasjon
 #	Skriv en funksjon printSysInfo som skriver ut den informasjon som psutil kan finne.
 #	Kan dere skrive en test for denne funksjonen?
+#		-Om vi skulle skrive en test på denne metoden måtte det vært spesifisert
+#		-maskinware eller hva som skal printes under hver kategori
 #	Hvilke andre muligheter har man for å finne informasjon om maskinvare i GNU/Linux?
-#
+#		-som vist under kan man bruke filene hvor informasjonen er lagret
 def printSysInfo():
 	#Hard drive capacity
 	diskUsage = psutil.disk_usage('/')
@@ -191,7 +203,7 @@ def printSysInfo():
 	pf = platform.platform()
 	print "Your platform:", pf
 
-printSysInfo()
+#printSysInfo()
 
 def test():
 	assert bitAnd(6, 5) == 4
@@ -199,14 +211,11 @@ def test():
 	assert bitOr(0, 1) == 1
 	assert ascii8Bin('a') == '01100001'
 	assert ascii8Bin('A') == '01000001'
-	# Skriv her inn passende tester for tarnsferBin og transferHex funksjoner
-	# fra oppgavene 6 og 7
 	assert ascii2_hex('a') == '61'
 	assert ascii2_hex('A') == '41'
-	assert transferHex('aA') == ['61', '41']
+	assert transferBin("Hallo") == '01001000\n01100001\n01101100\n01101100\n01101111'
+	assert transferHex('aA') == '61\n41'
 	assert unicodeBin('å') == '11000011 10100101'
-	# Dine egne tester
-	return "Testene er fullført uten feil."
+	return "Tests completed."
 
-print test()
-# Bruk denne funksjonen for å vise at alle testene er kjørt feilfritt
+#print test()

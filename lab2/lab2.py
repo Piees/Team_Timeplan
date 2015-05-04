@@ -63,9 +63,9 @@ def dec2roman(dec):
 			result = result + digit * 'M'
 
 		elif dec_len >= 5:
-			# Thousands
-			result = result + digit * "Learning time: Roman doesn't use that\
-			 high numbers\n"
+			# storre enn Thousands
+			result = result + digit * '''Learning time: Roman doesn\'t use that\
+			 high numbers\n'''
 
 		else:
 			# Look in the look-up table
@@ -76,7 +76,7 @@ def dec2roman(dec):
 	return result
 
 #print dec2roman(13100)
-print "Skriv lab2.romanmath('*forste tall*', '*operator*', '*andre tall*')"
+#print "Skriv lab2.romanmath('*forste tall*', '*operator*', '*andre tall*')"
 
 ops = {"+": operator.add,
 	   "-": operator.sub,
@@ -84,11 +84,5 @@ ops = {"+": operator.add,
 	   "/": operator.div}
 
 def romanmath(par1, op, par2):
-	if op == '+':
-		print dec2roman(roman2dec(par1) + roman2dec(par2))
-	elif op == '-':
-		print dec2roman(roman2dec(par1) - roman2dec(par2))
-	elif op == '*':
-		print dec2roman(roman2dec(par1) * roman2dec(par2))
-	elif op == '/':
-		print dec2roman(roman2dec(par1) / roman2dec(par2))
+	#operator tar parameter par1 og par2 om til desimal
+	return dec2roman(ops[op](roman2dec(par1), roman2dec(par2)))

@@ -1,10 +1,10 @@
+# -*- coding: utf-8 -*-
 # Gruppe: Team Timeplan
 # Yngve Olsen Ranestad
 # Steffen Sande
 # Even Nilsen
-# ooistein Fongaard
-# Haakon Dale
-# Haakon Gilje
+# Øistein Fongaard
+# Håkon Gilje
 
 import random
 '''numhands = 4
