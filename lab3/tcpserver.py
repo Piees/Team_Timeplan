@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import lab2
-from basecode_w_bugs import flips
+from basecode import flips
 from socket import *
 serverPort = 12000
 serverSocket = socket(AF_INET,SOCK_STREAM)
@@ -21,8 +21,9 @@ while 1:
 	elif prcd[len(prcd) - 1] == 'uni':
 		bode = ''.join(received)
 		bode = bode.replace('uni', '')
-		print bode
-		svar = bode.decode('utf-8').upper().encode('utf-8')
+		#print bode
+		svar = ''
+		#svar = bode.decode('utf-8').upper().encode('utf-8')
 		connectionSocket.send(svar)
-		print svar
+		#print svar
 connectionSocket.close()
