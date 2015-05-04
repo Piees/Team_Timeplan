@@ -3,7 +3,6 @@
 # Steffen Sande
 # Even Nilsen
 # ooistein Fongaard
-# Haakon Dale
 # Haakon Gilje
 
 import random
