@@ -26,6 +26,8 @@ print "Gruppemedlemmer:"
 for key, value in gruppe.items():
 	print "\t%s" % value
 
+
+
 #
 #  Oppgave 1
 #    Leke med utskrift
@@ -43,9 +45,8 @@ def ascii_bird():
 	print r"    (./"
 	print r"     '`"
 
-print "\nOppgave 1\n"
 
-ascii_bird()
+#ascii_bird()
 #
 #  Oppgave 2
 #    bitAnd - x&y
@@ -202,7 +203,7 @@ def printSysInfo():
 	pf = platform.platform()
 	print "Your platform:", pf
 
-printSysInfo()
+#printSysInfo()
 
 def test():
 	assert bitAnd(6, 5) == 4
@@ -217,4 +218,4 @@ def test():
 	assert unicodeBin('å') == '11000011 10100101'
 	return "Tests completed."
 
-print test()
+#print test()
