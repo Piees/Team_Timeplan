@@ -23,7 +23,7 @@ def flipbit(var):
 		flippedarray.append(prefix)
 		flippedarray.append(placeholder)
 		return flippedarray
-	else:
+	elif :
 		bb = '0' + bb
 		placeholder = ''
 		if bb[2] == '0':
@@ -53,8 +53,13 @@ def flips(letter):
 def flipmore(letters):
 	svar = ''
 	for x in letters:
-		svar += flips(x)
-		print "dette er: " + svar
+		if x[:2] == '110':
+			k = x
+			x+ 1
+			k += x
+			print k
+			svar += flips(x)
+			print "dette er: " + svar
 	return svar
 
 def test():

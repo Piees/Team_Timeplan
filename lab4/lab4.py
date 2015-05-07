@@ -18,6 +18,7 @@ for x in range(1, numhands):
 mydeck = [r+s for r in '23456789TJQKA' for s in 'SHDC']
 
 def deal(numhands, n=5, numdecks=1, deck=mydeck):
+	""" hva inn hva ut """
 	random.shuffle(deck)
 	for s in range(numdecks - 1):
 		deck = deck + mydeck

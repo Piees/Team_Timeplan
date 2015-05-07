@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import lab2
-from basecode import flips
+import bs
 from socket import *
 serverPort = 12000
 serverSocket = socket(AF_INET,SOCK_STREAM)
@@ -20,10 +20,12 @@ while 1:
 		connectionSocket.send(svar)
 	elif prcd[len(prcd) - 1] == 'uni':
 		bode = ''.join(received)
-		bode = bode.replace('uni', '')
-		#print bode
-		svar = ''
+		bode = bode.replace(' uni', '')
+		svar = bs.flips(bode)
 		#svar = bode.decode('utf-8').upper().encode('utf-8')
 		connectionSocket.send(svar)
 		#print svar
+	elif prcd == "invalid valuez":
+		print "invalid valuez"
+		connectionSocket.close()
 connectionSocket.close()
