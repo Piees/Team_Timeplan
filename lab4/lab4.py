@@ -2,6 +2,7 @@
 # Gruppe: Team Timeplan
 # Yngve Olsen Ranestad
 # Steffen Sande
+# Arild Høiland
 # Even Nilsen
 # Øistein Fongaard
 # Håkon Gilje
@@ -22,27 +23,16 @@ def deal(numhands, numcards=5, numdecks=1, deck=mydeck):
 	random.shuffle(deck)
 	for s in range(numdecks - 1):
 		deck = deck + mydeck
-	#hands = []
-	#for s in range(1, numhands):
-		#for r in range(1, 5):
-			#hands[s] = hands[s] + deck.pop()
-			#hands[r].append(deck.pop())
 	return [deck[numcards*i:numcards*(i+1)] for i in range(numhands)]
-	#return [[deck.pop() for n in range(n)] for h in range(numhands)]
-	#return hands
 pranks = ["high card", "Pair", "Two Pair", "Three of a kind", "Straight", \
 	"Flush", "Full house", "Four of a kind", "Straight flush"]
 
 def poker(hands):
 	"Return a list of winning hands: poker([hand,...]) => [hand,...]"
-
-	#if hand_rank(allmax(hands,key=hand_rank)[0])[0] == hand_rank(allmax(hands,key=hand_rank)[1])[0]:
 	try:
-		#print hand_rank(allmax(hands,key=hand_rank))
 		print "The winning hand had: " + \
 			pranks[hand_rank(allmax(hands,key=hand_rank)[0])[0]]
 	except ValueError:
-		#print hand_rank(allmax(hands,key=hand_rank))
 		print "The winning hand had: " + \
 		   pranks[hand_rank(allmax(hands,key=hand_rank))[0]]
 	return allmax(hands, key=hand_rank)
@@ -60,27 +50,6 @@ def allmax(iterable, key=None):
 	if len(result) == 1:
 		result = result[0]
 	return result
-
-#def allmax(iterable, key=None):
-#	iterable.sort(key=key,reverse=True)
-#	result = [iterable[0]]
-#	maxValue = key(iterable[0]) if key else iterable[0]
-#	for value in iterable[1:]:
-#		v = key(value) if key else value
-#		if v == maxValue: result.append(value)
-#		else: break
-#	return result
-
-#def allmax(iterable, key=None):
-#	best_hands = []
-#	max_hand = max(iterable, key=hand_rank)
-#	for hand in iterable:
-#		if hand_rank(hand) == hand_rank(max_hand):
-#			best_hands.append(hand)
-#	return best_hands
-#/	ismax = max(iterable, key=hand_rank)
-#/	return ismax
-
 
 def hand_rank(hand):
 	"Return a value indicating the ranking of a hand."
@@ -110,11 +79,6 @@ def card_ranks(hand):
 	ranks.sort(reverse = True)
 	return [5, 4, 3, 2, 1] if (ranks == [14, 5, 4, 3, 2]) else ranks
 
-#def flush(hand):
-#	"Return True if all the cards have the same suit."
-#	suits = [s for r,s in hand]
-#	return len(set(suits)) == 1
-
 def flush(hand):
 	checkflush = [s for r, s in hand]
 	return checkflush.count(checkflush[1]) == 5
@@ -129,15 +93,6 @@ def kind(n, ranks):
 	for r in ranks:
 		if ranks.count(r) == n: return r
 	return None
-
-#def two_pair(ranks):
-#    "If there are two pair here, return the two ranks of the two pairs, else None."
-#    pair = kind(2, ranks)
-#    lowpair = kind(2, list(reversed(ranks)))
-#    if pair and lowpair != pair:
-#        return (pair, lowpair)
-#    else:
-#        return None
 
 def two_pair(ranks):
 	"""If there are two pair, return the two ranks as a
@@ -167,7 +122,6 @@ def test():
 	hq = "2D 3D 4C 5H 7H".split() # High card
 	al = "AC 2D 4H 3D 5S".split() # Ace-Low Straight
 	tp1 = "7H 7D 9C 3C 9S".split() #Two Pair
-#	sf1 = "6C 7C 8C 9C TC".split() # Straight Flush
 	fkranks = card_ranks(fk)
 	tpranks = card_ranks(tp)
 	op1 = "KH 7C 5S KS 2S".split() # One pair
@@ -197,16 +151,6 @@ def test():
 	assert card_ranks(tp2) == [10, 10, 3, 3, 2]
 	assert card_ranks(tk1) == [11, 11, 11, 10, 8]
 	assert card_ranks(hq1) == [10, 9, 5, 3, 2] #oistein slutt
-#	assert poker([tk, op, al]) == al #hakon dale start
-#	assert poker([tp, tp1]) == tp
-#	assert hand_rank(tp1) == (2, (9, 7), [9, 9, 7, 7, 3])
-#	assert hand_rank(hq) == (0, [7, 5, 4, 3, 2])
-#	assert hand_rank(st) == (4, 14)
-#	assert card_ranks(op) ==[14, 13, 12, 10, 10]
-#	assert card_ranks(tp1) == [9, 9, 7, 7, 3]
-#	assert kind(3, tpranks) == None
-#	assert kind(2, tpranks) == 10, 9
-#	assert kind(1, tpranks) == 7 #hakon dale slutt
 	assert poker([hq, tp, op]) == tp#steffen start
 	assert poker([al, st]) == st
 	assert poker([al, st, fl]) == fl
