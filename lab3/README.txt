@@ -1,1 +1,2 @@
-start tcpserver.py derretter tcpclient.py og kos deg!
+Start først tcpserver.py
+Deretter tcpclient.py
