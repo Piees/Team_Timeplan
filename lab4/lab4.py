@@ -8,18 +8,13 @@
 # Håkon Gilje
 
 import random
-'''numhands = 4
-for c in range(1, numhands):
-	c = [r+s for r in '2345789TJQKA' for s in 'SHDC']
-
-for x in range(1, numhands):
-	random.shuffle(x)
-'''
 
 mydeck = [r+s for r in '23456789TJQKA' for s in 'SHDC']
 
 def deal(numhands, numcards=5, numdecks=1, deck=mydeck):
-	""" hva inn hva ut """
+	""" takes parameters: numbers of hands, number of cards(default = 5),
+	 number of decks(default = 1) used and type of deck(default = mydeck)
+	prints what the winner had and returns winning hand """
 	random.shuffle(deck)
 	for s in range(numdecks - 1):
 		deck = deck + mydeck
