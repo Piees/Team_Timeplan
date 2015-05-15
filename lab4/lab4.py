@@ -35,7 +35,8 @@ def poker(hands):
     return allmax(hands, key=hand_rank)
 
 def allmax(iterable, key=None):
-    """ Takes an iterable (ex. array of hands) and returns ? """
+    """ Takes an iterable (ex. array of hands) and returns the highest ranked
+    hand according to the key (ex. hand_rank) """
     result, maxcal = [], None
     key = key or (lambda x: x)
     for x in iterable:
@@ -71,7 +72,8 @@ def hand_rank(hand):
         return (0, ranks)
 
 def card_ranks(hand):
-    """ Takes an array of cards and returns the individual card ranks """
+    """ Takes an array of cards and returns the individual card ranks
+    sorted from highest to lowest """
     ranks = ['--23456789TJQKA'.index(r) for r, s in hand]
     ranks.sort(reverse = True)
     return [5, 4, 3, 2, 1] if (ranks == [14, 5, 4, 3, 2]) else ranks
@@ -90,7 +92,7 @@ def kind(n, ranks):
         Return None if there is no n-of-a-kind in the hand """
     for r in ranks:
         if ranks.count(r) == n: return r
-        return None
+    return None
 
 def two_pair(ranks):
     """ If there are two pair, return the two ranks as a
@@ -111,6 +113,7 @@ def test():
     sf1 = "6C 7C 8C 9C TC".split() # Straight Flush
     sf2 = "6D 7D 8D 9D TD".split() # Straight Flush
     fk = "9D 9H 9S 9C 7D".split() # Four of a Kind
+    fk3 = "TC TS TH 2C TD".split() # Four of a Kind
     fh = "TD TC TH 7C 7D".split() # Full House
     fl = "AH KH JH 6H TH".split() # Flush
     st = "AH KC QD JD TS".split() # Straight
@@ -126,7 +129,6 @@ def test():
     tp2 = "TH 3S 2H 3D TC".split() # Two pair
     tk1 = "TH JD JH 8C JC".split() # Three of kind
     hq1 = "TH 9D 5C 3H 2C".split() # High card
-    fk3 = "TC TS TH 2C TD".split() # Four of a Kind
     f3 = "2C 4C 6C 7C TC".split() # Flush
     s3 = "3C 4D 5H 6D 7H".split() # Straight
     assert poker([fk3, f3, s3]) == fk3 #gilje start
