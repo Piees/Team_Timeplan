@@ -23,6 +23,10 @@ def deal(numhands, numcards=5, numdecks=1, deck=mydeck):
         deck = deck + mydeck
     return [deck[numcards*i:numcards*(i+1)] for i in range(numhands)]
 
+def deal_udacity(numhands, n=5, deck = [r+s for r in '23456789TJQKA' for s in 'SHDC']):
+    """ Shuffle deck and deal out numhands n-card hands """
+    random.shuffle(deck)
+    return [deck[n*i:n*(i+1)] for i in range(numhands)]
 
 def poker(hands):
     """ Takes a two dimensional array and returns the winning hand. """
@@ -83,6 +87,11 @@ def flush(hand):
     checkflush = [s for r, s in hand]
     return checkflush.count(checkflush[1]) == 5
 
+def flush_udacity(hand):
+    """ Return True if all the cards have the same suit """
+    suits = [s for r,s in hand]
+    return len(set(suits)) == 1
+
 def straight(ranks):
     """ Return True if the ordered ranks form a 5-card straight """
     return (max(ranks)-min(ranks) == 4) and len(set(ranks)) == 5
@@ -106,6 +115,17 @@ def two_pair(ranks):
         return pairlist
     else:
         return None
+
+if __name__ == '__main__':
+    import timeit
+    print "flush()"
+    print(timeit.timeit("flush(['6C', '7C', '8C', '9C', 'T2'])", setup="from __main__ import flush"))
+    print "flush_udacity()"
+    print(timeit.timeit("flush_udacity(['6C', '7C', '8C', '9C', 'T2'])", setup="from __main__ import flush_udacity"))
+    print "deal()"
+    print(timeit.timeit("deal(2)", setup="from __main__ import deal"))
+    print "deal_udacity()"
+    print(timeit.timeit("deal_udacity(2)", setup="from __main__ import deal_udacity"))
 
 def test():
     """ Test cases for the functions in poker program """
