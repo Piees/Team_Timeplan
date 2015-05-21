@@ -1,88 +1,67 @@
 import re
-import math
-import operator
 
-# Regular expression used to validate and parse Roman numbers
-roman_re = re.compile("""^
-   ([M]{0,9})   # thousands
-   ([DCM]*)     # hundreds
-   ([XLC]*)     # tens
-   ([IVX]*)     # units
-   $""", re.VERBOSE)
+def processit(a):
+	prc = ""
+	prc = re.sub(r"CM", 900*"I", a)
+	prc = re.sub(r"M", 1000*"I", prc)
+	prc = re.sub(r"CD", 400*"I", prc)
+	prc = re.sub(r"D", 500*"I", prc)
+	prc = re.sub(r"XC", 90*"I", prc)
+	prc = re.sub(r"C", 100*"I", prc)
+	prc = re.sub(r"XL", 40*"I", prc)
+	prc = re.sub(r"L", 50*"I", prc)
+	prc = re.sub(r"IX", 9*"I", prc)
+	prc = re.sub(r"X", 10*"I", prc)
+	prc = re.sub(r"IV", 4*"I", prc)
+	prc = re.sub(r"V", 5*"I", prc)
+	return prc
 
-# This array contains valid groups of digits and encodes their values.
-# The first row is for units, the second for tens and the third for
-# hundreds. For example, the sixth element of the tens row yields the
-# value 50, as the first is 0.
-d2r_table = [
-	['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'],
-	['', 'X', 'XX', 'XXX', 'XL', 'L', 'LX', 'LXX', 'LXXX', 'XC'],
-	['', 'C', 'CC', 'CCC', 'CD', 'D', 'DC', 'DCC', 'DCCC', 'CM'],
-	['M' * i for i in xrange(0,10) ]]
+def backwardsprocess(a):
+	prc = ""
+	prc = re.sub(r"I"*1000, "M", a)
+	prc = re.sub(r"I"*900, "CM", prc)
+	prc = re.sub(r"I"*500, "D", prc)
+	prc = re.sub(r"I"*400, "CD", prc)
+	prc = re.sub(r"I"*100, "C", prc)
+	prc = re.sub(r"I"*90, "XC", prc)
+	prc = re.sub(r"I"*50, "L", prc)
+	prc = re.sub(r"I"*40, "XL", prc)
+	prc = re.sub(r"I"*10, "X", prc)
+	prc = re.sub(r"I"*9, "IX", prc)
+	prc = re.sub(r"I"*5, "V", prc)
+	prc = re.sub(r"I"*4, "IV", prc)
+	return prc
 
+def rmath(num1, num2):
+	return backwardsprocess(processit(num1) + processit(num2))
 
-def roman2dec(roman):
-	"""Converts a roman number, encoded in a string, to a decimal number."""
-	roman = roman.upper()
-	match = roman_re.match(roman)
+def dec_to_rom(dec):
+	bla = dec*"I"
+	return backwardsprocess(processit(bla))
 
-	if not match:
-		raise ValueError
+def rom_to_dec(rom):
+	return len(processit(rom))
 
-	thousands, hundreds, tens, units = match.groups()
-	result =  d2r_table[3].index(thousands) * 1000
-	result += d2r_table[2].index(hundreds) * 100
-	result += d2r_table[1].index(tens) * 10
-	result += d2r_table[0].index(units)
+def romanreplace(rnum):
+	k = 0
+	result = ""
+	tbr = ""
+	whosbigger = {"I": 1,"V": 2,"X": 3,"L": 4,"C": 5,"D": 6,"M": 7}
+	for a in rnum:
+		try:
+			if whosbigger.get(a) >= whosbigger.get(rnum[k + 1]):
+				result += processit(a)
+			else:
+				tbr += processit(a)
+		except IndexError:
+			result += processit(a)
+		k += 1
+	result = result[len(tbr):]
 	return result
 
-
-def dec2roman(dec):
-	"""Converts a positive decimal integer to a roman number."""
-	#if dec == 0:
-	#    return ''
-
-	digit = 0
-	rem = dec#100
-	result = ''
-	# Length in digits of the number dec
-	dec_len = int(math.ceil(math.log10(dec)) + 1) #3
-
-	# Scan the number digit-by-digit, starting from the MSD (most-significant
-	# digit)
-	while dec_len > 0:
-		# Let's take the current digit
-		factor = 10 ** (dec_len - 1) #100
-		digit = rem / factor #1
-
-		# And remove it from the number
-		rem = rem - digit * factor #0??
-
-		if dec_len == 4:
-			# Thousands
-			result = result + digit * 'M'
-
-		elif dec_len >= 5:
-			# storre enn Thousands
-			result = result + digit * '''Learning time: Roman doesn\'t use that\
-			 high numbers\n'''
-
-		else:
-			# Look in the look-up table
-			result = result + d2r_table[dec_len - 1][digit]
-
-		dec_len -= 1
-
-	return result
-
-#print dec2roman(13100)
-#print "Skriv lab2.romanmath('*forste tall*', '*operator*', '*andre tall*')"
-
-ops = {"+": operator.add,
-	   "-": operator.sub,
-	   "*": operator.mul,
-	   "/": operator.div}
-
-def romanmath(par1, op, par2):
-	#operator tar parameter par1 og par2 om til desimal
-	return dec2roman(ops[op](roman2dec(par1), roman2dec(par2)))
+def test():
+	assert processit("V") == "IIIII"
+	assert backwardsprocess("IIIII") == "V"
+	assert dec_to_rom(5) == "V"
+	assert rom_to_dec("X") == 10
+	print "Test passed"
