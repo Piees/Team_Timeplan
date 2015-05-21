@@ -16,7 +16,8 @@ while 1:
 	toproc = str(prcd.pop)
 	svar = ''
 	if prcd[len(prcd) - 1] == 'roman':
-		svar = lab2.romanmath(prcd[0], prcd[1], prcd[2])
+		print prcd
+		svar = lab2.rmath(prcd[0], prcd[1])
 		connectionSocket.send(svar)
 	elif prcd[len(prcd) - 1] == 'uni':
 		bode = ''.join(received)

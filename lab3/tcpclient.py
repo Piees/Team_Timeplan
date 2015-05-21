@@ -11,7 +11,7 @@ wtd = raw_input("1 for roman math, 2 for caps lockifying\n")
 switch = 1
 while switch == 1:
 	if wtd == '1':
-		letter = raw_input("Type: <first number> <operator> <second number> with spaces\n")
+		letter = raw_input("Type: <first roman numeral> <second roman numeral> with spaces\n")
 		romansend = letter.split(' ')
 		romaninf = letter + ' roman'
 		clientSocket.send(romaninf)

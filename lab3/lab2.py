@@ -2,7 +2,11 @@ import re
 
 def processit(a):
 	prc = ""
-	prc = re.sub(r"CM", 900*"I", a)
+	prc = re.sub(r"MX", 1010*"I", a)
+	prc = re.sub(r"DX", 510*"I", prc)
+	prc = re.sub(r"CX", 110*"I", prc)
+	prc = re.sub(r"LX", 60*"I", prc)
+	prc = re.sub(r"CM", 900*"I", prc)
 	prc = re.sub(r"M", 1000*"I", prc)
 	prc = re.sub(r"CD", 400*"I", prc)
 	prc = re.sub(r"D", 500*"I", prc)
